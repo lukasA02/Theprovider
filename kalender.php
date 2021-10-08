@@ -8,16 +8,31 @@ if(isset ($_POST['submit']))
     $start = $_POST['starttid'];
     $slut = $_POST['sluttid'];
 
-    $sql="INSERT INTO event (namn, agare, starttid, sluttid)
-    VALUES ('$namn', '$agare', '$start', '$slut')";
+    $sql = "SELECT * FROM event WHERE (Starttid >= ? AND Sluttid <= ? AND Agare = ?);";
 
-    if (mysqli_query($conn, $sql)) {
-        echo "Nytt event lagrat";
-    } else {
-        echo "Error: " .$sql . "
-        " . mysqli_error($conn);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $start, $slut, $agare);
+
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        $num_rows = $result->num_rows;
     }
-    mysqli_close($conn);
+
+    if ($num_rows > 0) {
+        echo "Redan bokat";
+    } else {
+        $sql="INSERT INTO event (namn, agare, starttid, sluttid)
+        VALUES ('$namn', '$agare', '$start', '$slut')";
+    
+        if (mysqli_query($conn, $sql)) {
+            echo "Nytt event lagrat";
+        } else {
+            echo "Error: " .$sql . "
+            " . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+    }
+    
 }
 
 // Set your timezone
