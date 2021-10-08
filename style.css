@@ -1,56 +1,102 @@
-body {
-    margin: 0;
+.print{
+    margin-left: 50px;
+    border: 1px solid darkred;
+    width:150px;
+    padding: 10px;
+    
+}
+*{
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    margin: 0;
 }
 
-#container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: auto;
+body{
+    background-color: rgb(255, 243, 226);
 }
 
-.box {
-    width: 360px;
-    margin: 5px;
-    text-align: center;
+.top{
+    width: 100vw;
+    height: 10vh;
+    background-color: /*rgb(82, 148, 165)*/ black;
 }
 
-/* .box * {
-    height: 2rem;
-} */
 
-.input {
-    height: 2rem;
-    width: 18vw;
-}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: /*rgb(36, 101, 117);*/ black;
+    /*opacity: 0.9;*/
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
 
-#login {
-    margin-top: 1rem;
-}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #c4c3c3;
+    display: block;
+    transition: 0.3s;
+    opacity: 1;
+  }
 
-form {
-    background-color: lightblue;
-    padding: 1rem;
-    padding-bottom: 2rem;
-    border-radius: 4px;
-    -webkit-box-shadow: 12px 12px 25px 0px rgba(0,0,0,0.34);
-    -moz-box-shadow: 12px 12px 25px 0px rgba(0,0,0,0.34);
-    box-shadow: 12px 12px 25px 0px rgba(0,0,0,0.34);
-}
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
 
-input[type=submit] {
-    width: 18vw;
-    height: 5vh;
-}
+  .opennav{
+      margin-left: 95vw;
+      margin-top: -7vh;
+      position: absolute;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
 
-input[type=submit]:hover {
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+
+
+  .color{
+    background-color: rgb(48, 47, 47);
+    color: white;
+  }
+
+.dark-mode{
+    background-color: rgb(121, 121, 121);
+    width: 4vw;
+    height: 2vh;
     cursor: pointer;
 }
 
-#first {
-    margin-top: 1rem;
+
+.fa fa-angle-down{
+  color: white;
+}
+
+.dropdown-container{
+  background-color: rgb(206, 222, 223);
+  color: #696969;
+  opacity: 0.8;
+}
+.form{
+    padding-left: 250px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
 }
