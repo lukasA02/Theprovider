@@ -2,8 +2,10 @@
 session_start();
 require_once 'anslut.php';
 
-$username = $_POST['user'];
-$password = $_POST['pass'];
+if(isset($_POST['user']) && isset($_POST['pass'])) {
+    $username = $_POST['user'];
+    $password = $_POST['pass'];
+}
 
 $sql = "SELECT * FROM anvandare WHERE Anvnamn = ? && Losen = ?";
 
