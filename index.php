@@ -52,7 +52,19 @@
     <label for="sluttid">Sluttid:</label>
     <input type="datetime-local" name="sluttid" require>
     <input type="submit" name="submit" value="submit">
+</form>
 </div>
+
+<form action="skapaanvandare.php" method="GET">
+    <input type="number" name="Behorighet">
+    <input type="text" placeholder="Anvandarnamn" name="Anvnamn">
+    <input type="password" placeholder="Losenord" name="Losen">
+    <input type="text" placeholder="Efternamn" name="Enamn">
+    <input type="text" placeholder="Fornamn" name="Fnamn">
+    <input type="text" placeholder="Epost" name="Epost">
+    <input type="text" placeholder="Telefon" name="Telefon">
+    <input type="submit" value="submit">
+</form>
     <?php
 include 'conn.php';
 $sql = "SELECT starttid, sluttid, eventid, agare, namn FROM event, anvandare ";
