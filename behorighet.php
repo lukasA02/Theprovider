@@ -7,32 +7,29 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
     $password = $_GET['losen'];
 }
 
-$sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password'";
+$sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$username'";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-
     while($row = mysqli_fetch_assoc($result)) {
         $anvandarid = $row["AnvandarID"];
         $behorighet = $row["Behorighet"];
-        //echo $anvandarid;
+        echo $anvandarid;
     }
+
     switch ($behorighet) {
         // om användare
         case 1:
             echo "Användare";
             break;
-
         // om moderator
         case 2:
             echo "Moderator";
             break;
-
         // om admin
         case 3:
             echo "Admin";
             break;
-        
         default:
             # code...
     }
@@ -40,7 +37,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "noll resultat";
 }
 
-// mysqli_close($conn);
+mysqli_close($conn);
 
 // $stmt = $conn->prepare($sql);
 // $stmt->bind_param("ss", $username, $password);
