@@ -10,13 +10,22 @@ if(isset($_GET["Behorighet"]) && isset($_GET["Anvnamn"]) && isset($_GET["Losen"]
     $Fnamn = $_GET["Fnamn"];
     $Epost = $_GET["Epost"];
     $Telefon = $_GET["Telefon"];
-} 
+}
 
-$sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon) VALUES (null,?,?,?,?,?,?,?)";
+$sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon) 
+VALUES (null,'$Behorighet','$Anvnamn','$Losen','$Enamn','$Fnamn','$Epost','$Telefon')";
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("issssss", $Behorighet, $Anvnamn, $Losen, $Enamn, $Fnamn, $Epost, $Telefon);
+if (mysqli_query($conn, $sql)) {
+  echo "Konto skapat";
+} else {
+  echo "Fel: " . $sql . "<br>" . mysqli_error($conn);
+}
 
-$stmt->execute();
-$stmt->close();
+mysqli_close($conn);
+
+// $stmt = $conn->prepare($sql);
+// $stmt->bind_param("issssss", $Behorighet, $Anvnamn, $Losen, $Enamn, $Fnamn, $Epost, $Telefon);
+
+// $stmt->execute();
+// $stmt->close();
 ?>

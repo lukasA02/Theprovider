@@ -7,22 +7,32 @@ if(isset($_POST['user']) && isset($_POST['pass'])) {
     $password = $_POST['pass'];
 }
 
-$sql = "SELECT * FROM anvandare WHERE Anvnamn = ? && Losen = ?";
+$sql = "SELECT * FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password'";
+$result = mysqli_query($conn, $sql);
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $username, $password);
-
-if ($stmt->execute()) {
-    $result = $stmt->get_result();
-    $num_rows = $result->num_rows;
-}
-
-if ($num_rows > 0) {
+if (mysqli_num_rows($result) > 0) {
     $_SESSION['inloggad'] = true;
-    header("location:index.php");
+    header("Location: index.php");
 } else {
     echo "Inte inloggad";
 }
+
+mysqli_close($conn);
+
+// $stmt = $conn->prepare($sql);
+// $stmt->bind_param("ss", $username, $password);
+
+// if ($stmt->execute()) {
+//     $result = $stmt->get_result();
+//     $num_rows = $result->num_rows;
+// }
+
+// if ($num_rows > 0) {
+//     $_SESSION['inloggad'] = true;
+//     header("location:index.php");
+// } else {
+//     echo "Inte inloggad";
+// }
 
 // kod
 // switch ($behorighet) {
