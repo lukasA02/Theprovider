@@ -12,9 +12,6 @@
 
    <p> spionering!!!! </p>
 </div>
-<div class="lasse">
-    Inloggad som: Lasse
-</div>
     </form>
     <div class="color">
     <div>
