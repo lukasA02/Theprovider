@@ -46,7 +46,7 @@
 <form action="process.php" method="POST">
     
     <input type="text" name="namn" placeholder="Namn på event" require autocomplete="off">
-
+    <input type="text" name="Agare" placeholder="vem äger eventet">
     <label for="starttid">Starttid:</label>
     <input type="datetime-local" name="starttid" require>
     <label for="sluttid">Sluttid:</label>

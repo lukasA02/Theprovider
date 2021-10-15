@@ -5,7 +5,7 @@ if(isset ($_POST['submit']))
 {
     if(isset($_POST['namn']) && isset($_POST['starttid']) && isset($_POST['sluttid']))
     $namn = $_POST['namn'];
-    $agare = 1;
+    $agare = $_POST['Agare'];
     $start = $_POST['starttid'];
     $slut = $_POST['sluttid'];
 
