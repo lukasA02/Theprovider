@@ -12,13 +12,17 @@
 
    <p> VÄLKOMMEN TILL EVENTHANTERAREN!!!! </p>
 </div>
-<div class="lasse">
-    Inloggad som: Lasse
-</div>
     </form>
     <div class="color">
     <div>
     <header class="top"></header>
+    <a href="event.php">Redigera event</a><br>
+    <a href="inputdatum.php">Visa specifik dag</a><br>
+    <a href="minkalender.php?anv=TheAdmin&losen=123">Mina event</a><br>
+    <a href="rattigheter.php?anv=TheAdmin&losen=123">Bjuda in</a><br>
+    <a href="redigera.php?anv=TheAdmin&losen=123">Redigera användare</a><br>
+    <a href="visaannan.php?anv=TheAdmin&losen=123">Andras event</a><br>
+
     </div>
     
     <!--<div id="mySidenav" class="sidenav">
@@ -65,28 +69,6 @@
     <input type="text" placeholder="Telefon" name="Telefon">
     <input type="submit" value="submit">
 </form>
-    <?php
-include 'conn.php';
-$sql = "SELECT starttid, sluttid, eventid, agare, namn FROM event, anvandare ";
-$result = mysqli_query($conn, $sql);
-?>
-<div class="print">
-Kommande event
-<br>
-<?php
-if (mysqli_num_rows($result) > 0) {
-  // output data of each row
-  while($row = mysqli_fetch_assoc($result)) {
-    echo " <br> Namn: " . $row["namn"]. "<br> Ägare: " . $row["agare"]. "<br> Start: " . $row["starttid"]. "<br> Slut: " . $row["sluttid"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}
-?>
-</div>
-<?php
-mysqli_close($conn);
-?>
 </body>
 <script src="theprovider.js"></script>
 </html>

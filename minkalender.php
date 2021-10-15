@@ -2,7 +2,7 @@
 require_once 'behorighet.php';
 require_once 'conn.php';
 
-if($behorighet == 3) { // Användare
+ // Användare
     $sql = "SELECT * FROM event WHERE Agare = '$anvandarid'";
     $result = mysqli_query($conn, $sql);
 
@@ -27,6 +27,6 @@ if($behorighet == 3) { // Användare
     echo json_encode($events);
     
     mysqli_close($conn);
-}        
+        
 
 ?>
