@@ -1,3 +1,6 @@
+<?php
+require_once("behorighet.php");
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -24,6 +27,25 @@
     <a href="visaannan.php?anv=TheAdmin&losen=123">Andras event</a><br>
 
     </div>
+
+    <?php
+    if(isset($behorighet)) {
+        switch ($behorighet) {
+            case 1:
+                echo "<div>Du är inloggad som admin</div>";
+                $visaskapaanv = true;
+                break;
+            case 3:
+                echo "<div>Du är inloggad som användare</div>";
+                break;
+            default:
+                echo "<div>Du är inte inloggad</div>";
+                break;
+        }
+    }
+    else
+        echo "Du är inte inloggad";
+    ?>
     
     <!--<div id="mySidenav" class="sidenav">
         
@@ -48,7 +70,6 @@
 
 <div class="form">
 <form action="process.php" method="POST">
-    
     <input type="text" name="namn" placeholder="Namn på event" require autocomplete="off">
     <input type="text" name="Agare" placeholder="vem äger eventet">
     <label for="starttid">Starttid:</label>
@@ -58,8 +79,10 @@
     <input type="submit" name="submit" value="submit">
 </form>
 </div>
-
-<form action="skapaanvandare.php" method="GET">
+<?php
+if(isset($behorighet))
+if($behorighet == 1)
+echo '<form action="skapaanvandare.php" method="GET">
     <input type="number" name="Behorighet">
     <input type="text" placeholder="Anvandarnamn" name="Anvnamn">
     <input type="password" placeholder="Losenord" name="Losen">
@@ -68,8 +91,8 @@
     <input type="text" placeholder="Epost" name="Epost">
     <input type="text" placeholder="Telefon" name="Telefon">
     <input type="submit" value="submit">
-</form>
+</form>';
+?>
 </body>
 <script src="theprovider.js"></script>
 </html>
-
