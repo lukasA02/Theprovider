@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylee.css">
-    <title>spionen</title>
+    <title>Visa när andra är upptagna</title>
 </head>
 <body>
     <div class="asd">
 
-   <p> spionering!!!! </p>
+   <p> Ange ett ID </p>
 </div>
     </form>
     <div class="color">
@@ -20,8 +20,8 @@
 
     <br>
     
-<form action="spion.php" method="GET">
-    <input type="number" name="SpionID">
+<form action="visarn.php" method="GET">
+    <input type="number" name="VisarID">
     <input type="submit" value="submit">
 </form>
 </body>

@@ -1,6 +1,6 @@
 <?php
 
-    $SpionID = $_GET['SpionID'];
+    $VisarID = $_GET['VisarID'];
 
 ?>
 
@@ -11,12 +11,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylee.css">
-    <title>spionen</title>
+    <title>Events!</title>
 </head>
 <body>
     <div class="asd">
 
-   <p> spionering!!!! </p>
+   <p> Hens kalender </p>
 </div>
     </form>
     <div class="color">
@@ -28,7 +28,7 @@
 
 <?php
     include 'conn.php';
-    $sql = "SELECT starttid, sluttid, eventid, agare, namn FROM event WHERE agare='$SpionID'";
+    $sql = "SELECT starttid, sluttid, eventid, agare, namn FROM event WHERE agare='$VisarID'";
     $result = mysqli_query($conn, $sql);
 ?>
 <div class="print">
