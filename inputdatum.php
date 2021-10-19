@@ -24,7 +24,9 @@ if (isset($_GET['submit'])){
     $result = mysqli_query($conn,$sql);
     if (mysqli_query($conn, $sql)) {
         while($row = mysqli_fetch_array($result)) {
-        echo "Success!" . " <br> Namn: " . $row["Namn"] . "<br> Start: " . $row["Starttid"]. "<br> Slut: " . $row["Sluttid"]. "<br>";
+       // echo "Success!" . " <br> Namn: " . $row["Namn"] . "<br> Start: " . $row["Starttid"]. "<br> Slut: " . $row["Sluttid"]. "<br>";
+       $dat = array("Namn"=>$row["Namn"], "Start"=>$row["Starttid"], "Slut"=>$row["Sluttid"] );
+     echo json_encode($dat);
       } 
      
     mysqli_close($conn);

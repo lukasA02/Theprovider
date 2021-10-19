@@ -5,6 +5,7 @@ require_once 'conn.php';
 if(isset($_GET['anv']) && isset($_GET['losen'])) {
     $username = $_GET['anv'];
     $password = $_GET['losen'];
+    $password = MD5($password);
 }
 
 $sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password'";
