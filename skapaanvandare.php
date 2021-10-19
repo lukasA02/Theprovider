@@ -13,7 +13,7 @@ if(isset($_GET["Behorighet"]) && isset($_GET["Anvnamn"]) && isset($_GET["Losen"]
 }
 
 $sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon) 
-VALUES (null,'$Behorighet','$Anvnamn','$Losen','$Enamn','$Fnamn','$Epost','$Telefon')";
+VALUES (null,'$Behorighet','$Anvnamn',MD5($Losen),'$Enamn','$Fnamn','$Epost','$Telefon')";
 
 if (mysqli_query($conn, $sql)) {
   echo "Konto skapat";
