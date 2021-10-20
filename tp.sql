@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
-
+-- Generation Time: Oct 20, 2021 at 02:20 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -55,7 +55,29 @@ INSERT INTO `anvandare` (`AnvandarID`, `Behorighet`, `Anvnamn`, `Losen`, `Enamn`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `blogg`
+--
 
+CREATE TABLE `blogg` (
+  `BloggID` int(11) NOT NULL,
+  `AnvandarID` int(11) NOT NULL,
+  `TaggID` int(11) DEFAULT NULL,
+  `Last` tinyint(1) NOT NULL,
+  `Beskrivning` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
+  `Titel` varchar(50) COLLATE utf8_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+--
+-- Dumping data for table `blogg`
+--
+
+INSERT INTO `blogg` (`BloggID`, `AnvandarID`, `TaggID`, `Last`, `Beskrivning`, `Titel`) VALUES
+(1, 1, 1, 0, 'Blogg om twitter :)))', 'Blå fågel'),
+(3, 2, NULL, 0, 'Kalles hembakade blogg', 'Anka');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `event`
 --
 
@@ -80,7 +102,31 @@ INSERT INTO `event` (`EventID`, `Namn`, `Agare`, `Starttid`, `Sluttid`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `meddelande`
+--
 
+CREATE TABLE `meddelande` (
+  `MeddelandeID` int(11) NOT NULL,
+  `BloggID` int(11) DEFAULT NULL,
+  `InlaggID` int(11) DEFAULT NULL,
+  `TaggID` int(11) DEFAULT NULL,
+  `Tidsstampel` datetime NOT NULL DEFAULT current_timestamp(),
+  `Rubrik` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
+  `Innehall` varchar(2000) COLLATE utf8_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+--
+-- Dumping data for table `meddelande`
+--
+
+INSERT INTO `meddelande` (`MeddelandeID`, `BloggID`, `InlaggID`, `TaggID`, `Tidsstampel`, `Rubrik`, `Innehall`) VALUES
+(5, 1, NULL, 1, '2021-10-20 14:15:50', 'Jag hatar twitter', 'InnehållInnehållInnehållInnehållInnehåll'),
+(6, 3, NULL, NULL, '2021-10-20 14:17:00', 'Kalles inlägg', 'Lägg ägg'),
+(7, NULL, 6, NULL, '2021-10-20 14:19:51', 'Nä', 'Du suger kalle');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rattigheter`
 --
 
@@ -98,6 +144,24 @@ INSERT INTO `rattigheter` (`rattigheterID`, `EventID`, `AnvandarID`) VALUES
 (25, 10, 1),
 (27, 10, 8);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tagg`
+--
+
+CREATE TABLE `tagg` (
+  `TaggID` int(11) NOT NULL,
+  `Namn` varchar(30) COLLATE utf8_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+--
+-- Dumping data for table `tagg`
+--
+
+INSERT INTO `tagg` (`TaggID`, `Namn`) VALUES
+(1, 'twitter');
+
 --
 -- Indexes for dumped tables
 --
@@ -109,7 +173,14 @@ ALTER TABLE `anvandare`
   ADD PRIMARY KEY (`AnvandarID`);
 
 --
+-- Indexes for table `blogg`
+--
+ALTER TABLE `blogg`
+  ADD PRIMARY KEY (`BloggID`),
+  ADD KEY `banan` (`AnvandarID`),
+  ADD KEY `zoo` (`TaggID`);
 
+--
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
@@ -117,7 +188,16 @@ ALTER TABLE `event`
   ADD KEY `foreign key anvandare` (`Agare`);
 
 --
+-- Indexes for table `meddelande`
+--
+ALTER TABLE `meddelande`
+  ADD PRIMARY KEY (`MeddelandeID`),
+  ADD KEY `de` (`TaggID`),
+  ADD KEY `e` (`BloggID`),
+  ADD KEY `krt` (`InlaggID`);
 
+--
+-- Indexes for table `rattigheter`
 --
 ALTER TABLE `rattigheter`
   ADD PRIMARY KEY (`rattigheterID`),
@@ -125,32 +205,77 @@ ALTER TABLE `rattigheter`
   ADD KEY `EID` (`EventID`);
 
 --
+-- Indexes for table `tagg`
+--
+ALTER TABLE `tagg`
+  ADD PRIMARY KEY (`TaggID`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
 -- AUTO_INCREMENT for table `anvandare`
 --
 ALTER TABLE `anvandare`
   MODIFY `AnvandarID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `blogg`
+--
+ALTER TABLE `blogg`
+  MODIFY `BloggID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
+--
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
   MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-<
+
+--
+-- AUTO_INCREMENT for table `meddelande`
 --
 ALTER TABLE `meddelande`
   MODIFY `MeddelandeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `rattigheter`
+--
+ALTER TABLE `rattigheter`
+  MODIFY `rattigheterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
+--
+-- AUTO_INCREMENT for table `tagg`
+--
+ALTER TABLE `tagg`
+  MODIFY `TaggID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `blogg`
+--
+ALTER TABLE `blogg`
+  ADD CONSTRAINT `banan` FOREIGN KEY (`AnvandarID`) REFERENCES `anvandare` (`AnvandarID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `zoo` FOREIGN KEY (`TaggID`) REFERENCES `tagg` (`TaggID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `event`
 --
 ALTER TABLE `event`
   ADD CONSTRAINT `foreign key anvandare` FOREIGN KEY (`Agare`) REFERENCES `anvandare` (`AnvandarID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `meddelande`
+--
+ALTER TABLE `meddelande`
+  ADD CONSTRAINT `de` FOREIGN KEY (`TaggID`) REFERENCES `tagg` (`TaggID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `e` FOREIGN KEY (`BloggID`) REFERENCES `blogg` (`BloggID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `krt` FOREIGN KEY (`InlaggID`) REFERENCES `meddelande` (`MeddelandeID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+--
 -- Constraints for table `rattigheter`
 --
 ALTER TABLE `rattigheter`
