@@ -26,7 +26,7 @@ if (mysqli_num_rows($result) > 0) {
     
     $sql = "UPDATE anvandare SET Hashkey = $hash, Inloggtid = '$tid' WHERE AnvandarID = $anvandarid";
     if(mysqli_query($conn, $sql)){
-        echo "inlogg";
+        echo json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
     } else {
         echo $sql . mysqli_error($conn);
     }

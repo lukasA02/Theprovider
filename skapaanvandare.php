@@ -1,6 +1,8 @@
 <?php
 
 require_once "conn.php";
+require_once "verifiera.php";
+if(verifiera($_GET['key'],$GET_['user'])){
 
 if(isset($_GET["Behorighet"]) && isset($_GET["Anvnamn"]) && isset($_GET["Losen"]) && isset($_GET["Enamn"]) && isset($_GET["Fnamn"]) && isset($_GET["Epost"]) && isset($_GET["Telefon"])){
     $Behorighet = $_GET["Behorighet"];
@@ -47,4 +49,7 @@ mysqli_close($conn);
 
 // $stmt->execute();
 // $stmt->close();
+}else{
+  header('Location:www.aftonbladet.se');
+}
 ?>
