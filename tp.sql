@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Värd: 127.0.0.1
--- Tid vid skapande: 12 okt 2021 kl 11:08
--- Serverversion: 10.4.20-MariaDB
--- PHP-version: 8.0.9
+-- Host: localhost
+-- Generation Time: Oct 20, 2021 at 11:01 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,37 +18,44 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databas: `tp`
+-- Database: `tp`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `anvandare`
+-- Table structure for table `anvandare`
 --
 
 CREATE TABLE `anvandare` (
   `AnvandarID` int(11) NOT NULL,
-  `Behorighet` int(11) NOT NULL,
+  `Behorighet` int(11) NOT NULL DEFAULT 3,
   `Anvnamn` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
-  `Losen` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
+  `Losen` varchar(32) COLLATE utf8_swedish_ci NOT NULL,
   `Enamn` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
   `Fnamn` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
   `Epost` varchar(40) COLLATE utf8_swedish_ci NOT NULL,
-  `Telefon` varchar(20) COLLATE utf8_swedish_ci NOT NULL
+  `Telefon` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
+  `Inloggtid` datetime NOT NULL,
+  `Hashkey` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
--- Dumpning av Data i tabell `anvandare`
+-- Dumping data for table `anvandare`
 --
 
-INSERT INTO `anvandare` (`AnvandarID`, `Behorighet`, `Anvnamn`, `Losen`, `Enamn`, `Fnamn`, `Epost`, `Telefon`) VALUES
-(1, 3, 'VadSomHelst', '123vetefan', 'Larssonsson', 'Lars', 'LarsLarssonsssonsson@Lars.se', '0500474747');
+INSERT INTO `anvandare` (`AnvandarID`, `Behorighet`, `Anvnamn`, `Losen`, `Enamn`, `Fnamn`, `Epost`, `Telefon`, `Inloggtid`, `Hashkey`) VALUES
+(1, 1, 'TheAdmin', '202cb962ac59075b964b07152d234b70', 'Fentiofyraår', 'Bosse', 'bosse.bosse@bosse.bosse', '050012345', '2021-10-20 10:18:53', 354815393),
+(2, 2, 'Kalle', '202cb962ac59075b964b07152d234b70', 'Karl', 'Kalle', 'Kalle.nu', '0000003', '0000-00-00 00:00:00', 0),
+(4, 3, 'Sven', '7f6ffaa6bb0b408017b62254211691b5', 'Ivan', 'Ult', 'Sven.nu', '69', '0000-00-00 00:00:00', 0),
+(6, 3, 'Ivar', '202cb962ac59075b964b07152d234b70', 'Svan', '  lukas', 'Ivar.nu', '00123', '0000-00-00 00:00:00', 0),
+(8, 1, 'Kalle', '202cb962ac59075b964b07152d234b70', 'andren', '  lukas', 'Stefan.karl@live.se', '072674390', '2021-10-20 10:35:13', 485259595),
+(14, 1, 'hej', '202cb962ac59075b964b07152d234b70', 'Svan', 'Stefan', 'Sven.nu', '00123', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -60,57 +67,98 @@ CREATE TABLE `event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
--- Dumpning av Data i tabell `event`
+-- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`EventID`, `Namn`, `Agare`, `Starttid`, `Sluttid`) VALUES
 (1, 'Larssons fest 2', 1, '2021-10-21 12:00:00', '2021-10-21 12:30:00'),
-(2, 'AAAAAAAAAAAAAAAAAAAA', 1, '2021-10-07 10:25:48', '2021-10-07 10:45:48'),
 (4, 'Larssons fest 3', 1, '2021-10-07 11:03:48', '2021-10-07 11:59:48'),
-(7, 'idot', 1, '2021-10-21 12:24:00', '2021-10-21 13:41:00');
+(9, 'hej', 4, '2021-10-15 13:43:00', '2021-10-21 13:43:00'),
+(10, 'hem', 6, '2021-10-17 14:22:00', '2021-10-18 14:22:00');
+
+-- --------------------------------------------------------
 
 --
--- Index för dumpade tabeller
+-- Table structure for table `rattigheter`
+--
+
+CREATE TABLE `rattigheter` (
+  `rattigheterID` int(11) NOT NULL,
+  `EventID` int(11) NOT NULL,
+  `AnvandarID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rattigheter`
+--
+
+INSERT INTO `rattigheter` (`rattigheterID`, `EventID`, `AnvandarID`) VALUES
+(25, 10, 1),
+(27, 10, 8);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Index för tabell `anvandare`
+-- Indexes for table `anvandare`
 --
 ALTER TABLE `anvandare`
   ADD PRIMARY KEY (`AnvandarID`);
 
 --
--- Index för tabell `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`EventID`),
   ADD KEY `foreign key anvandare` (`Agare`);
 
 --
--- AUTO_INCREMENT för dumpade tabeller
+-- Indexes for table `rattigheter`
+--
+ALTER TABLE `rattigheter`
+  ADD PRIMARY KEY (`rattigheterID`),
+  ADD KEY `AID` (`AnvandarID`),
+  ADD KEY `EID` (`EventID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT för tabell `anvandare`
+-- AUTO_INCREMENT for table `anvandare`
 --
 ALTER TABLE `anvandare`
-  MODIFY `AnvandarID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `AnvandarID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT för tabell `event`
+-- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Restriktioner för dumpade tabeller
+-- AUTO_INCREMENT for table `rattigheter`
+--
+ALTER TABLE `rattigheter`
+  MODIFY `rattigheterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Restriktioner för tabell `event`
+-- Constraints for table `event`
 --
 ALTER TABLE `event`
   ADD CONSTRAINT `foreign key anvandare` FOREIGN KEY (`Agare`) REFERENCES `anvandare` (`AnvandarID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `rattigheter`
+--
+ALTER TABLE `rattigheter`
+  ADD CONSTRAINT `AID` FOREIGN KEY (`AnvandarID`) REFERENCES `anvandare` (`AnvandarID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `EID` FOREIGN KEY (`EventID`) REFERENCES `event` (`EventID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
