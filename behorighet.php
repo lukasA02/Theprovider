@@ -11,10 +11,45 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
 $sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password'";
 $result = mysqli_query($conn, $sql);
 
+$hash = mt_rand(100000000, 999999999);
+$tid = new DateTime('now');
+date_default_timezone_set("Europe/Stockholm");
+$tid = date('Y-m-d H:i:s');
+
+
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         $anvandarid = $row["AnvandarID"];
         $behorighet = $row["Behorighet"];
+        // echo $anvandarid;
+    }
+    
+    $sql = "UPDATE anvandare SET Hashkey = $hash, Inloggtid = '$tid' WHERE AnvandarID = $anvandarid";
+    if(mysqli_query($conn, $sql)){
+        echo "inlogg";
+    } else {
+        echo $sql . mysqli_error($conn);
+    }
+    
+
+
+}
+
+if(isset($_GET['anv']) && isset($_GET['hash'])) {
+    $username = $_GET['anv'];
+    $hash = $_GET['hash'];
+}
+
+$sql = "SELECT AnvandarID, Behorighet, Anvnamn, Hashkey, Inloggtid FROM anvandare WHERE 
+Anvnamn = '$username' && Hashkey = '$hash' && Inloggtid > DATE_SUB(now(), INTERVAL 10 MINUTE)";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+        $anvandarid = $row["AnvandarID"];
+        $behorighet = $row["Behorighet"];
+        // $nutid = $row["Inloggtid"];
+        // strtotime($nutid);
         // echo $anvandarid;
     }
 }
