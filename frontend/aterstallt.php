@@ -1,6 +1,6 @@
 <?php
 
-require_once 'conn.php';
+require_once '../conn.php';
 
 if(isset($_GET['anv']) && isset($_GET['losen'])) {
     $username = $_GET['anv'];

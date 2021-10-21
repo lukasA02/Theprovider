@@ -1,7 +1,7 @@
 <?php
 
-require_once "conn.php";
-require_once "behorighet.php";
+require_once "../conn.php";
+require_once "../behorighet.php";
 
 echo $anvandarid;
 
