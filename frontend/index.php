@@ -1,5 +1,5 @@
 <?php
-require_once("behorighet.php");
+//require_once '../behorighet.php';
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -21,7 +21,7 @@ require_once("behorighet.php");
     <header class="top"></header>
     <a href="event.php">Redigera event</a><br>
     <a href="inputdatum.php">Visa specifik dag</a><br>
-    <a href="minkalender.php?anv=TheAdmin&losen=123">Mina event</a><br>
+    <a href="../minkalender.php?anv=TheAdmin&losen=123">Mina event</a><br>
     <a href="rattigheter.php?anv=TheAdmin&losen=123">Bjuda in</a><br>
     <a href="redigera.php?anv=TheAdmin&losen=123">Redigera användare</a><br>
     <a href="visaannan.php?anv=TheAdmin&losen=123">Andras event</a><br>
@@ -29,6 +29,10 @@ require_once("behorighet.php");
     </div>
 
     <?php
+    require_once '../behorighet.php';
+    require_once '../behorighet.php';
+
+
     if(isset($behorighet)) {
         switch ($behorighet) {
             case 1:

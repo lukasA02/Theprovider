@@ -14,7 +14,7 @@
 </head>
 <body>
 <?php
-    include 'conn.php';
+    include '../conn.php';
     $sql = "SELECT Starttid, Sluttid, eventid, agare, namn FROM event WHERE agare='$VisarID'";
     $result = mysqli_query($conn, $sql);
 ?>
