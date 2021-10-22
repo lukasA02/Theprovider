@@ -17,7 +17,7 @@ echo $anvandarid;
 <body>
 <form action="redigeraanvandare.php" method="GET">
     <input type="hidden" name="anvandarid" value="<?php echo $anvandarid; ?>">
-    <input type="text" placeholder="Anvandarnamn" name="Anvnamn">
+    <input type="text" placeholder="Anvandarnamn" name="Anvnamn" >
     <input type="text" placeholder="Efternamn" name="Enamn">
     <input type="text" placeholder="Fornamn" name="Fnamn">
     <input type="text" placeholder="Epost" name="Epost">

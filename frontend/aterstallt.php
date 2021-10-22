@@ -10,27 +10,30 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
     echo $password;
 }
 
-$sql = "SELECT AnvandarID FROM anvandare WHERE Anvnamn = '$username'  && Losen = '$password'";
-$result = mysqli_query($conn, $sql);
-
-echo "ditt id: " . $result -> num_rows;
-$DittId = $result -> num_rows;
-
 if(isset($_GET['LosenTxt'])) {
 
     $NyttLosen = $_GET['LosenTxt'];
     echo "nytt lösenord: " . $NyttLosen;
-    $Md5NyttLosen = md5($NyttLosen);
+    
 
 } else header('Location: aterstall.php');
 
-$sql = "UPDATE anvandare SET Losen = '$Md5NyttLosen' WHERE  anvandarid = $DittId";
+$uppercase = preg_match('@[A-Z]@', $NyttLosen);
+$lowercase = preg_match('@[a-z]@', $NyttLosen);
+$number    = preg_match('@[0-9]@', $NyttLosen);
 
-if (mysqli_query($conn, $sql)) {
-    echo " Anvandare uppdaterad";
+$sql = "UPDATE anvandare SET Losen = MD5('$NyttLosen') WHERE  anvandarid = 1";
+
+
+if(!$uppercase || !$lowercase || !$number || strlen($NyttLosen) < 8) {
+  echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number character.';
+}else{
+  echo 'Strong password.';
+  if (mysqli_query($conn, $sql)) {
   } else {
-    echo " Fel: " . $sql . "<br>" . mysqli_error($conn);
+    echo "Fel: " . $sql . "<br>" . mysqli_error($conn);
   }
+}
 
 
 ?>
@@ -46,8 +49,6 @@ if (mysqli_query($conn, $sql)) {
 </head>
 <body>
 
-<?php mysqli_close();
-?>
 <script src="theprovider.js"></script>
 </html>
 

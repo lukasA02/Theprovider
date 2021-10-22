@@ -48,8 +48,8 @@ $DittId = $result -> num_rows;
 </form>
 </body>
 
-<?php mysqli_close();
-?>
+ 
+
 <script src="theprovider.js"></script>
 </html>
 
