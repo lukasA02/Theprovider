@@ -37,7 +37,7 @@ if (isset($_GET['submit'])){
     $fil    =   ($_GET['fil']);
     $farg   =   ($_GET['farg']);
     $bak    =   ($_GET['bak']);
-}
+
 
 $sql =" INSERT INTO foretag (fil, farg, bak) VALUES ('$fil', '$farg', '$bak')";
 
@@ -63,6 +63,6 @@ $sql = "SELECT * FROM foretag";
     else{
         echo "Failed";}
     
-
+    }
 ?>
 </html>
