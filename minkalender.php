@@ -3,8 +3,8 @@ require_once 'behorighet.php';
 require_once 'conn.php';
 
 // Användare
-$sql = "SELECT * FROM event WHERE Agare = '$$anvandarid'";
-$sql2 = "SELECT event.EventID, event.Agare, event.Namn, event.Starttid, event.Sluttid, anvandare.Anvnamn FROM anvandare JOIN rattigheter ON rattigheter.AnvandarID=anvandare.AnvandarID JOIN event ON event.EventID=rattigheter.EventID WHERE anvandare.AnvandarID='$$anvandarid  '";
+$sql = "SELECT * FROM event WHERE Agare = '$anvandarid'";
+$sql2 = "SELECT event.EventID, event.Agare, event.Namn, event.Starttid, event.Sluttid, anvandare.Anvnamn FROM anvandare JOIN rattigheter ON rattigheter.AnvandarID=anvandare.AnvandarID JOIN event ON event.EventID=rattigheter.EventID WHERE anvandare.AnvandarID='$anvandarid  '";
 $result = mysqli_query($conn, $sql);
 
 $events = array();
