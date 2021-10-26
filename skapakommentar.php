@@ -45,4 +45,6 @@ else if(isset($_GET['kommentarer'], $_GET['bloggid'])) {
     echo json_encode($blogg);
     mysqli_close($conn);
 }
+else
+    echo "Fyll i alla fält";
 ?>

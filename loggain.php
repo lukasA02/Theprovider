@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'anslut.php';
+require_once 'conn.php';
 
 if(isset($_POST['user']) && isset($_POST['pass'])) {
     $username = $_POST['user'];

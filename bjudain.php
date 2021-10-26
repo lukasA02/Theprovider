@@ -4,7 +4,6 @@ if(isset($_GET["EventN"]) && isset($_GET["anvandarid"])){
 
   $EN = $_GET["EventN"];
   $AID = $_GET["anvandarid"];
-}
 $sql = "INSERT INTO rattigheter (rattigheterID, EventID, AnvandarID)
   VALUES (null, $EN, $AID)";
   
@@ -31,6 +30,9 @@ $sql = "INSERT INTO rattigheter (rattigheterID, EventID, AnvandarID)
  }
  
  mysqli_close($conn);
+}
+else
+  echo "Fel: välj EventN och anvandarid";
  
 
 
