@@ -1,5 +1,6 @@
 <?php
 //input för event
+// galen fil
 include 'conn.php';
 if(isset ($_POST['submit']))
 {

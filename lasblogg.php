@@ -2,7 +2,7 @@
     require_once "behorighet.php";
     require_once "conn.php";
 
-    if(isset($behorighet))
+    if(isset($behorighet)) {
         if($behorighet == 1) {
             if(isset($_GET['bloggid']) && isset($_GET['last'])) {
                 $bloggid = $_GET['bloggid'];
@@ -22,4 +22,7 @@
                 mysqli_close($conn);
             }
         }
+    }
+    else 
+        echo "Logga in";
 ?>

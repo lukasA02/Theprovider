@@ -7,7 +7,7 @@
         $last = $_GET['last'];
         $beskrivning = $_GET['beskrivning'];
         $titel = $_GET['titel'];
-
+        
         // Om skaparen av bloggen har valt en tagg
         if(isset($_GET['taggid']))
             $taggid = $_GET['taggid'];
@@ -29,4 +29,6 @@
         echo json_encode($blogg);
         mysqli_close($conn);
     }
+    else
+        echo "Fyll i alla fält";
 ?>

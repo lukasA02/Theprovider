@@ -9,6 +9,8 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
     $password = MD5($password);
     echo $password;
 }
+else
+    echo "Logga in";
 
 if(isset($_GET['LosenTxt'])) {
 
@@ -16,7 +18,8 @@ if(isset($_GET['LosenTxt'])) {
     echo "nytt lösenord: " . $NyttLosen;
     
 
-} else header('Location: aterstall.php');
+} else 
+  header('Location: aterstall.php');
 
 $uppercase = preg_match('@[A-Z]@', $NyttLosen);
 $lowercase = preg_match('@[a-z]@', $NyttLosen);
