@@ -29,22 +29,6 @@ if(isset($_GET['inlaggid'], $_GET['rubrik'], $_GET['innehall'])) {
 }
 else
     echo "Välj inläggid, rubrik och innehåll";
-// else if(isset($_GET['kommentarer'], $_GET['bloggid'])) {
-//     $kommentarer = $_GET['kommentarer'];
-//     $bloggid = $_GET['bloggid'];
 
-//     $sql = "UPDATE blogg SET Kommentarer = $kommentarer WHERE BloggID = $bloggid";
-
-//     $blogg = array();
-//     if (mysqli_query($conn, $sql)) {
-//         array_push($blogg, array(
-//             "Result"=>true,
-//             "BloggID"=>mysqli_insert_id($conn)
-//           ));
-//     } else {
-//     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-//     }
-//     echo json_encode($blogg);
-//     mysqli_close($conn);
-// }
+   
 ?>

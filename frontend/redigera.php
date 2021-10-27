@@ -3,8 +3,10 @@
 require_once "../conn.php";
 require_once "../behorighet.php";
 
-echo $anvandarid;
+// Den här sidan fungerar inte 🤡🤡🤡
 
+if(isset($anvandarid))
+    echo $anvandarid;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,7 @@ echo $anvandarid;
 </head>
 <body>
 <form action="redigeraanvandare.php" method="GET">
-    <input type="hidden" name="anvandarid" value="<?php echo $anvandarid; ?>">
+    <input type="hidden" name="anvandarid" value="<?php if(isset($anvandarid)) echo $anvandarid; ?>">
     <input type="text" placeholder="Anvandarnamn" name="Anvnamn" >
     <input type="text" placeholder="Efternamn" name="Enamn">
     <input type="text" placeholder="Fornamn" name="Fnamn">

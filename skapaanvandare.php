@@ -2,9 +2,9 @@
 
 require_once "conn.php";
 require_once "verifiera.php";
-if(verifiera($_GET['key'],$GET_['user'])){
+if(verifiera($_GET['key'],$_GET['user'])){
 
-if(isset($_GET["Behorighet"]) && isset($_GET["Anvnamn"]) && isset($_GET["Losen"]) && isset($_GET["Enamn"]) && isset($_GET["Fnamn"]) && isset($_GET["Epost"]) && isset($_GET["Telefon"])){
+if(isset($_GET["Behorighet"]) && isset($_GET["Enamn"]) && isset($_GET["Fnamn"]) && isset($_GET["Epost"]) && isset($_GET["Telefon"])){
     $Behorighet = $_GET["Behorighet"];
     $Anvnamn = $_GET["Anvnamn"];
     $Losen = $_GET["Losen"];
@@ -12,7 +12,7 @@ if(isset($_GET["Behorighet"]) && isset($_GET["Anvnamn"]) && isset($_GET["Losen"]
     $Fnamn = $_GET["Fnamn"];
     $Epost = $_GET["Epost"];
     $Telefon = $_GET["Telefon"];
-}
+
 $uppercase = preg_match('@[A-Z]@', $Losen);
 $lowercase = preg_match('@[a-z]@', $Losen);
 $number    = preg_match('@[0-9]@', $Losen);
@@ -43,13 +43,16 @@ VALUES (null,'$Behorighet','$Anvnamn',MD5('$Losen'),'$Enamn','$Fnamn','$Epost','
 }*/
 
 mysqli_close($conn);
-
+}
+else
+echo "Fyll i alla fält";
 // $stmt = $conn->prepare($sql);
 // $stmt->bind_param("issssss", $Behorighet, $Anvnamn, $Losen, $Enamn, $Fnamn, $Epost, $Telefon);
 
 // $stmt->execute();
 // $stmt->close();
 }else{
-  header('Location:www.aftonbladet.se');
+  // header('Location:www.aftonbladet.se'); ???????????????????????????
+  echo "Logga in";
 }
 ?>
