@@ -1,13 +1,32 @@
 <?php
 
-require_once "../conn.php";
-require_once "../behorighet.php";
+require_once "conn.php";
+require_once "behorighet.php";
 
-// Den här sidan fungerar inte 🤡🤡🤡
+if(isset($anvandarid)) {
+echo $anvandarid;
+$sql = "SELECT Anvnamn, Enamn, Fnamn, Epost, Telefon FROM anvandare Where anvandarid='$anvandarid'";
 
-if(isset($anvandarid))
-    echo $anvandarid;
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  if($row = mysqli_fetch_assoc($result)) {
+    $Anvnamn = $row["Anvnamn"];
+    $Enamn = $row["Enamn"];
+    $Fnamn = $row["Fnamn"];
+    $Epost = $row["Epost"];
+    $Telefon = $row["Telefon"];
+  }
+} else {
+  echo "0 results";
+}
+
+mysqli_close($conn);
+}
+else
+  echo "Logga in";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +36,13 @@ if(isset($anvandarid))
     <title>Document</title>
 </head>
 <body>
-<form action="redigeraanvandare.php" method="GET">
-    <input type="hidden" name="anvandarid" value="<?php if(isset($anvandarid)) echo $anvandarid; ?>">
-    <input type="text" placeholder="Anvandarnamn" name="Anvnamn" >
-    <input type="text" placeholder="Efternamn" name="Enamn">
-    <input type="text" placeholder="Fornamn" name="Fnamn">
-    <input type="text" placeholder="Epost" name="Epost">
-    <input type="text" placeholder="Telefon" name="Telefon">
+<form action="../redigeraanvandare.php" method="GET">
+    <input type="hidden" name="anvandarid" value="<?php echo $anvandarid; ?>">
+    <input type="text" placeholder="Anvandarnamn" name="Anvnamn" value="<?php if(isset($anvandarid)) print $Anvnamn; ?>">
+    <input type="text" placeholder="Efternamn" name="Enamn" value="<?php if(isset($anvandarid)) print $Enamn; ?>">
+    <input type="text" placeholder="Fornamn" name="Fnamn" value="<?php if(isset($anvandarid)) print $Fnamn; ?>">
+    <input type="text" placeholder="Epost" name="Epost" value="<?php if(isset($anvandarid)) print $Epost; ?>">
+    <input type="text" placeholder="Telefon" name="Telefon" value="<?php if(isset($anvandarid)) print $Telefon; ?>">
     <input type="submit" value="submit">
 </form>
 </body>
