@@ -1,10 +1,9 @@
 <?php
 
-require_once "conn.php";
-require_once "behorighet.php";
+require_once "../conn.php";
+require_once "../behorighet.php";
 
-if(isset($anvandarid)) {
-echo $anvandarid;
+
 $sql = "SELECT Anvnamn, Enamn, Fnamn, Epost, Telefon FROM anvandare Where anvandarid='$anvandarid'";
 
 $result = mysqli_query($conn, $sql);
@@ -22,9 +21,6 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 mysqli_close($conn);
-}
-else
-  echo "Logga in";
 ?>
 
 <!DOCTYPE html>
@@ -38,11 +34,13 @@ else
 <body>
 <form action="../redigeraanvandare.php" method="GET">
     <input type="hidden" name="anvandarid" value="<?php echo $anvandarid; ?>">
-    <input type="text" placeholder="Anvandarnamn" name="Anvnamn" value="<?php if(isset($anvandarid)) print $Anvnamn; ?>">
-    <input type="text" placeholder="Efternamn" name="Enamn" value="<?php if(isset($anvandarid)) print $Enamn; ?>">
-    <input type="text" placeholder="Fornamn" name="Fnamn" value="<?php if(isset($anvandarid)) print $Fnamn; ?>">
-    <input type="text" placeholder="Epost" name="Epost" value="<?php if(isset($anvandarid)) print $Epost; ?>">
-    <input type="text" placeholder="Telefon" name="Telefon" value="<?php if(isset($anvandarid)) print $Telefon; ?>">
+    <input type="text" placeholder="Anvandarnamn" name="Anvnamn" value="<?php print $Anvnamn; ?>">
+    <input type="text" placeholder="Efternamn" name="Enamn" value="<?php print $Enamn; ?>">
+    <input type="text" placeholder="Fornamn" name="Fnamn" value="<?php print $Fnamn; ?>">
+    <input type="text" placeholder="Epost" name="Epost" value="<?php print $Epost; ?>">
+    <input type="text" placeholder="Telefon" name="Telefon" value="<?php print $Telefon; ?>">
+    <input type="text" name="anv">
+    <input type="text" name="hash">
     <input type="submit" value="submit">
 </form>
 </body>

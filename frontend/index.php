@@ -30,7 +30,7 @@
 
     <?php
     require_once '../behorighet.php';
-    require_once '../behorighet.php';
+    
 
 
     if(isset($behorighet)) {
@@ -73,14 +73,17 @@
 </div>-->
 
 <div class="form">
-<form action="process.php" method="POST">
+<form action="../process.php" method="GET">
     <input type="text" name="namn" placeholder="Namn på event" require autocomplete="off">
     <input type="text" name="Agare" placeholder="vem äger eventet">
     <label for="starttid">Starttid:</label>
     <input type="datetime-local" name="starttid" require>
     <label for="sluttid">Sluttid:</label>
     <input type="datetime-local" name="sluttid" require>
+    <input type="text" name="anv">
+    <input type="text" name="hash">
     <input type="submit" name="submit" value="submit">
+
 </form>
 </div>
 <?php
