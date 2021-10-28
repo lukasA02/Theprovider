@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Datum</title>
-</head>
-<body>
-    <form action="" method="GET">
-        <input type="date" name="date">
-        <input type="submit" name="submit">
-    </form>
-</body>
-</html>
-<!-- // frontend??????????????????????? -->
+
 <?php
 include 'conn.php';
+include 'verifiera.php';
+
+if(isset($_GET['anv']) && isset($_GET['hash'])){
+
+    if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
 
 if (isset($_GET['submit'])){
     $date = $_GET['date'];
@@ -33,6 +23,13 @@ if (isset($_GET['submit'])){
     
     }
 }
+    }else{
+        echo "felmedelande2";
+    }
 
+
+}else{
+    echo "felmedelande";
+}
 
 ?>

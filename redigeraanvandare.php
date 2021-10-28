@@ -32,7 +32,8 @@ if (mysqli_query($conn, $sql)) {
     echo " Fel: " . $sql . "<br>" . mysqli_error($conn);
   }
 mysqli_close($conn);
-  }else{echo "fuck you 2";
+  }else{
+    echo "fuck you 2";
   }
 }else{
   echo "fuck you";

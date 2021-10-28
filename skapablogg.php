@@ -1,6 +1,11 @@
 <?php
     require_once "behorighet.php";
     require_once "conn.php";
+    require_once 'verifiera.php';
+
+    if(isset($_GET['anv']) && isset($_GET['hash'])){
+
+        if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
 
     if(isset($_GET['anvandarid'], $_GET['last'], $_GET['beskrivning'], $_GET['titel'])) {
         $anvandarid = $_GET['anvandarid'];
@@ -29,6 +34,14 @@
         echo json_encode($blogg);
         mysqli_close($conn);
     }
-    else
-        echo "Fyll i alla fält";
+    else{
+        echo "Fyll i alla fält";}
+
+    }else{
+        echo "felmedelande2";
+    }
+
+}   else{
+    echo "felmedelande";
+}
 ?>

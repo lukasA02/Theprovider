@@ -1,6 +1,12 @@
 <?php
 require_once 'behorighet.php';
 require_once "conn.php";
+require_once 'verifiera.php';
+
+
+if(isset($_GET['anv']) && isset($_GET['hash'])){
+
+  if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
 
     if(isset($_GET['BloggID'])){
     $bloggid = $_GET['BloggID'];
@@ -24,8 +30,14 @@ require_once "conn.php";
       }
     } 
 
+  }
 
+}else{
+  echo "felmeddelande2";
+}
 
+}else{
+  echo "felmeddelande";
 }
 
 

@@ -20,7 +20,7 @@
     <div>
     <header class="top"></header>
     <a href="event.php">Redigera event</a><br>
-    <a href="inputdatum.php">Visa specifik dag</a><br>
+    <a href="datuminput.php">Visa specifik dag</a><br>
     <a href="../minkalender.php?anv=TheAdmin&losen=123">Mina event</a><br>
     <a href="rattigheter.php?anv=TheAdmin&losen=123">Bjuda in</a><br>
     <a href="redigera.php?anv=TheAdmin&losen=123">Redigera användare</a><br>
