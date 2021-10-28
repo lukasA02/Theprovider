@@ -2,7 +2,10 @@
 
 require_once "conn.php";
 require_once "verifiera.php";
-if(verifiera($_GET['key'],$_GET['user'])){
+
+if(isset($_GET['anv']) && isset($_GET['hash'])){
+
+  if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
 
 if(isset($_GET["Behorighet"]) && isset($_GET["Enamn"]) && isset($_GET["Fnamn"]) && isset($_GET["Epost"]) && isset($_GET["Telefon"])){
     $Behorighet = $_GET["Behorighet"];
@@ -52,7 +55,10 @@ echo "Fyll i alla fält";
 // $stmt->execute();
 // $stmt->close();
 }else{
-  // header('Location:www.aftonbladet.se'); ???????????????????????????
-  echo "Logga in";
+  echo "felmeddelnade2";
+}
+
+}else{
+  echo "felmeddelnade";
 }
 ?>

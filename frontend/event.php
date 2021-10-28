@@ -14,7 +14,7 @@
         <input type="datetime-local" name="starttid">
         <label for="sluttid">Ny sluttid</label>
         <input type="datetime-local" name="sluttid">
-        <label for="delete">Ta bort event?</label>
+        <label for="delete">Ta bort event?
         <button type="submit" name="tabort" >tabort</button>
         <input type="submit" name="submit">
     </form>

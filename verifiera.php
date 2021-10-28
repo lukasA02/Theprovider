@@ -26,12 +26,5 @@ if(mysqli_num_rows($result) == 1) {
 // js
 }
 
-/********************************************************************** */
-// Så här kommer varje phpfil se ut typ.
-if(verifiera($_GET['key'],$_GET['user'])){
-//gör det ni skall
-echo "😶";
-} else {
-//denna anvndare är inte verifierad.
-}
+
 ?>

@@ -1,5 +1,11 @@
 <?php
 require_once "conn.php";
+require_once "verifiera.php";
+
+if(isset($_GET['anv']) && isset($_GET['hash'])){
+
+  if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+
 if(isset($_GET["EventN"]) && isset($_GET["anvandarid"])){
 
   $EN = $_GET["EventN"];
@@ -34,7 +40,13 @@ $sql = "INSERT INTO rattigheter (rattigheterID, EventID, AnvandarID)
 else
   echo "Fel: välj EventN och anvandarid";
  
+  }else{
+    echo "felmeddelande2";
+  }
 
+}else{
+  echo "felmedelande";
+}
 
 
 

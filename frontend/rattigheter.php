@@ -47,7 +47,8 @@ mysqli_close($conn);
     <form action="bjudain.php" method="GET">
        <input type="text" name="EventN" placeholder="eventets ID" >
        <input type="text" name="anvandarid" placeholder="id på vem du ska bjuda in">
-
+       <input type="text" name="anv" placeholder="AnvändarID">
+       <input type="text" name="hash"placeholder="hash key"> 
         <input type="submit" name="submit">
     </form>
 

@@ -1,14 +1,20 @@
 <?php
 //input för event
-// galen fil
 include 'conn.php';
-if(isset ($_POST['submit']))
+require_once 'behorighet.php';
+require_once 'verifiera.php';
+
+if(isset($_GET['anv']) && isset($_GET['hash'])){
+    
+    if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+    
+if(isset ($_GET['submit']))
 {
-    if(isset($_POST['namn']) && isset($_POST['starttid']) && isset($_POST['sluttid']))
-    $namn = $_POST['namn'];
-    $agare = $_POST['Agare'];
-    $start = $_POST['starttid'];
-    $slut = $_POST['sluttid'];
+    if(isset($_GET['namn']) && isset($_GET['starttid']) && isset($_GET['sluttid']))
+    $namn = $_GET['namn'];
+    $agare = $_GET['Agare'];
+    $start = $_GET['starttid'];
+    $slut = $_GET['sluttid'];
 
     $sql = "SELECT * FROM event WHERE (Starttid >= '$start' AND Sluttid <= '$slut' AND Agare = '$agare');";
     $result = mysqli_query($conn, $sql);
@@ -24,13 +30,14 @@ if(isset ($_POST['submit']))
         } else {
             echo "Error: " .$sql . "
             " . mysqli_error($conn);
+
         }
 
         mysqli_close($conn);
     }
-
+die;
     header( "Refresh:1; index.php");
-
+}
     // $stmt = $conn->prepare($sql);
     // $stmt->bind_param("sss", $start, $slut, $agare);
 
@@ -54,6 +61,11 @@ if(isset ($_POST['submit']))
 
     //     mysqli_close($conn);
     // }    
+    }else{
+        echo "Fuck you2";
+    }
+} else{
+    echo "Fuck you1";
 }
 
 ?>

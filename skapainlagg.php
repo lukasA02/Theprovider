@@ -1,6 +1,11 @@
 <?php
 require_once "behorighet.php";
 require_once "conn.php";
+require_once 'verifiera.php';
+
+if(isset($_GET['anv']) && isset($_GET['hash'])){
+
+    if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
 
 if(isset($_GET['bloggid'], $_GET['rubrik'], $_GET['innehall'])) {
     $bloggid = $_GET['bloggid'];
@@ -27,6 +32,14 @@ if(isset($_GET['bloggid'], $_GET['rubrik'], $_GET['innehall'])) {
     echo json_encode($inlagg);
     mysqli_close($conn);
 }
-else
-    echo "Välj bloggid, rubrik och innehåll";
+else{
+    echo "Välj bloggid, rubrik och innehåll";}
+
+}else{
+    echo "felmedelande2";
+}
+
+}else{
+    echo "felmedelande";
+}
 ?>

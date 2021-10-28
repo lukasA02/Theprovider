@@ -1,6 +1,11 @@
 <?php
 require_once 'behorighet.php';
 require_once 'conn.php';
+require_once 'verifiera.php';
+
+if(isset($_GET['anv']) && isset($_GET['hash'])){
+
+  if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
 
 // Användare
 if(isset($anvandarid)) {
@@ -50,8 +55,19 @@ if(isset($anvandarid)) {
   echo json_encode($events);
   mysqli_close($conn);  
 }
-else
+else{
   echo "Logga in";
+}
+
+  }else{
+    echo "felmedelande2";
+  }
+
+}else{
+  echo "felmedelande";
+}
+
+
 
 //SELECT event.Namn, anvandare.Anvnamn FROM anvandare JOIN rattigheter ON rattigheter.AnvandarID=anvandare.AnvandarID JOIN event ON event.EventID=rattigheter.EventID;
 ?>
