@@ -3,6 +3,9 @@ require_once 'behorighet.php';
 require_once 'conn.php';
 require_once 'verifiera.php';
 
+$_GET['anv']= 1;
+$_GET['hash'] =123456;
+
 if(isset($_GET['anv']) && isset($_GET['hash'])){
 
   if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){

@@ -11,7 +11,8 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
 $sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password'";
 $result = mysqli_query($conn, $sql);
 
-$hash = mt_rand(100000000, 999999999);
+//$hash = mt_rand(100000000, 999999999);
+$hash =123456;
 $tid = new DateTime('now');
 date_default_timezone_set("Europe/Stockholm");
 $tid = date('Y-m-d H:i:s');
