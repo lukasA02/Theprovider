@@ -3,15 +3,15 @@ require_once 'behorighet.php';
 require_once 'conn.php';
 require_once 'verifiera.php';
 
-$_GET['anv']= 1;
-$_GET['hash'] =123456;
+$_GET['anv'] =1;
+$_GET['hash'] = 123456;
 
 if(isset($_GET['anv']) && isset($_GET['hash'])){
 
   if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
 
 // Användare
-if(isset($anvandarid)) {
+$anvandarid=$_GET['anv'];
   $sql = "SELECT * FROM event WHERE Agare = '$anvandarid'";
   $sql2 = "SELECT event.EventID, event.Agare, event.Namn, event.Starttid, event.Sluttid, anvandare.Anvnamn FROM anvandare JOIN rattigheter ON rattigheter.AnvandarID=anvandare.AnvandarID JOIN event ON event.EventID=rattigheter.EventID WHERE anvandare.AnvandarID='$anvandarid  '";
   $result = mysqli_query($conn, $sql);
@@ -57,10 +57,7 @@ if(isset($anvandarid)) {
   }
   echo json_encode($events);
   mysqli_close($conn);  
-}
-else{
-  echo "Logga in";
-}
+
 
   }else{
     echo "felmedelande2";

@@ -1,7 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="form">
+    <form action="../inputdatum.php" method="GET">
+        <input type="text" name="anvandarid" placeholder="AnvändarID">
+        <input type="text" name="last" placeholder="Låst? 0=nej 1=ja">
+        <input type="text" name="beskrivning"placeholder="Beskrivning"> 
+        <input type="text" name="titel"placeholder="Titel"> 
+        <input type="submit" name="submit">
+    </form>
+    </div>
+</body>
+
+</html>
+
+
 <?php
     require_once "behorighet.php";
     require_once "conn.php";
     require_once 'verifiera.php';
+
+    $_GET['anv'] =1;
+    $_GET['hash'] = 123456;
+
 
     if(isset($_GET['anv']) && isset($_GET['hash'])){
 

@@ -9,25 +9,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylee.css">
     <title>Index</title>
+    <link rel="stylesheet" href="style-gen.css">
 </head>
 <body>
     <div class="asd">
 
-   <p> VÄLKOMMEN TILL EVENTHANTERAREN!!!! </p>
+   <h2> VÄLKOMMEN TILL EVENTHANTERAREN!!!!</h2>
 </div>
     </form>
-    <div class="color">
-    <div>
+    <div class="link">
+  
     <header class="top"></header>
     <a href="event.php">Redigera event</a><br>
     <a href="datuminput.php">Visa specifik dag</a><br>
-    <a href="../minkalender.php?anv=TheAdmin&losen=123">Mina event</a><br>
-    <a href="rattigheter.php?anv=TheAdmin&losen=123">Bjuda in</a><br>
-    <a href="redigera.php?anv=TheAdmin&losen=123">Redigera användare</a><br>
-    <a href="visaannan.php?anv=TheAdmin&losen=123">Andras event</a><br>
+    <a href="testin.html?anv=TheAdmin&losen=T000stef">Mina event</a><br>
+    <a href="../minkalender.php?anv=TheAdmin&losen=T000stef">Visa event (json)</a><br>
+    <a href="rattigheter.php?anv=TheAdmin&losen=T000stef">Bjuda in</a><br>
+    <a href="redigera.php?anv=TheAdmin&losen=T000stef">Redigera användare</a><br>
+    <a href="visaannan.php?anv=TheAdmin&losen=T000stef">Andras event</a><br>
+    
 
     </div>
 
+    <div class="inlogg">
     <?php
     require_once '../behorighet.php';
     
@@ -51,26 +55,8 @@
         echo "Du är inte inloggad";
     ?>
     
-    <!--<div id="mySidenav" class="sidenav">
-        
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        
-        <a href="#" class="dropdown-btn">Redigera <i class="fa fa-angle-down"></i></a>    
-            <div class="dropdown-container">
-                <a href="#">Användare</a>
-                <a href="#">Event</a>
-            </div>
-
-        <a href="#">Lägg till</a>
-        <a href="#">Ta bort</a>
-        <a href="#">Kalender</a>
-        
-        <div class="dark-mode" onclick="myFunction()">
-            <p class="mörk">Dark mode</p>
-        </div>
     </div>
-    <span class="opennav" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-</div>-->
+
 
 <div class="form">
 <form action="../process.php" method="GET">
@@ -85,7 +71,7 @@
     <input type="submit" name="submit" value="submit">
 
 </form>
-</div>
+
 <?php
 if(isset($behorighet))
 if($behorighet == 1)
@@ -100,6 +86,7 @@ echo '<form action="skapaanvandare.php" method="GET">
     <input type="submit" value="submit">
 </form>';
 ?>
+</div>
 </body>
 <script src="theprovider.js"></script>
 </html>

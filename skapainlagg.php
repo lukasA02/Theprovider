@@ -1,7 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="form">
+    <form action="../inputdatum.php" method="GET">
+        <input type="text" name="bloggid" placeholder="BloggID">
+        <input type="text" name="rubrik" placeholder="Rubrik">
+        <input type="text" name="innehall" placeholder="Innehåll">
+        <input type="text" name="taggid" placeholder="TaggID"> 
+        <input type="submit" name="submit">
+    </form>
+    </div>
+</body>
+
+</html>
+
+
 <?php
 require_once "behorighet.php";
 require_once "conn.php";
 require_once 'verifiera.php';
+
+$_GET['anv'] =1;
+$_GET['hash'] = 123456;
 
 if(isset($_GET['anv']) && isset($_GET['hash'])){
 

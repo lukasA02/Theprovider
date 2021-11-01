@@ -3,6 +3,9 @@ require_once "../conn.php";
 require_once '../behorighet.php';
 
 
+$_GET['anv'] =1;
+$_GET['hash'] = 123456;
+
  /*$sql="INSERT INTO rattigheter 
         VALUES (null,'2', '2')";
     
@@ -41,9 +44,22 @@ mysqli_close($conn);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style-gen.css">
+
+  <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous">
+  </script>
+
 </head>
+
 <body>
+  <div id="resultat"></div>
+
+  <button class="knapp" onclick="runshiiiht3('anv','losen')">Visa Event!</button>
   
+  <div class="form">
     <form action="bjudain.php" method="GET">
        <input type="text" name="EventN" placeholder="eventets ID" >
        <input type="text" name="anvandarid" placeholder="id på vem du ska bjuda in">
@@ -51,9 +67,9 @@ mysqli_close($conn);
        <input type="text" name="hash"placeholder="hash key"> 
         <input type="submit" name="submit">
     </form>
+    </div>
 
 
-
-
+<script src="rattigheter.js"></script>
 </body>
 </html>
