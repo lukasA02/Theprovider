@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: azure;
+}
+
+.res{
+    width: 50vw;
+    height: 30vh;
+    margin-left: 25vw;
+    margin-top: 20vh;
+    background-color: rgb(255, 240, 240);
+    border: 1px solid lightgray;
+}
+#resultat{
+    margin-top: 5vw;
+    margin-left: 7vw;
+    position: absolute;
+    line-height: 2;
+}
+
+
+.knapp{
+    margin-top: 32vh;
+    margin-left: 70.1vw;
+    position: absolute;
+    width: 5vw;
+    height: 5vh;
+    background-color: rgb(255, 240, 240);
+    border-radius: 8px;
+    border: 1px solid rgb(196, 196, 196);
+}

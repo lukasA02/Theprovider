@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: azure;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h2{
+    text-align: center;
+    margin-top: 5vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(124, 124, 124);
+    font-size: 1vw;
+    margin-left: 3vw;
+    line-height: 1.4;
+}
+a:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+.inlogg{
+    font-size: .8vw;
+    margin-left: 3vw;
+    line-height: 1.4;
+}
+
+.form{
+    width: 70vw;
+    align-items: center;
+    margin-left: 20vw;
+    line-height: 4;
+}

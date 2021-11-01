@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style-gen.css">
 </head>
 <body>
+  <div class="form">
     <form action="" method="GET">
         <input type="text" name="evid" placeholder="EventID" required>
         <input type="text" name="namn" placeholder="Nytt namn på event">
@@ -18,6 +20,7 @@
         <button type="submit" name="tabort" >tabort</button>
         <input type="submit" name="submit">
     </form>
+    </div>
 </body>
 </html>
 

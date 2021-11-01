@@ -3,7 +3,7 @@
 require_once "../conn.php";
 require_once "../behorighet.php";
 
-
+echo $anvandarid;
 $sql = "SELECT Anvnamn, Enamn, Fnamn, Epost, Telefon FROM anvandare Where anvandarid='$anvandarid'";
 
 $result = mysqli_query($conn, $sql);
@@ -30,22 +30,17 @@ mysqli_close($conn);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style-gen.css">
 </head>
 <body>
-  <div class="form">
-<form action="../redigeraanvandare.php" method="GET">
+<form action="redigeraanvandare.php" method="GET">
     <input type="hidden" name="anvandarid" value="<?php echo $anvandarid; ?>">
     <input type="text" placeholder="Anvandarnamn" name="Anvnamn" value="<?php print $Anvnamn; ?>">
     <input type="text" placeholder="Efternamn" name="Enamn" value="<?php print $Enamn; ?>">
     <input type="text" placeholder="Fornamn" name="Fnamn" value="<?php print $Fnamn; ?>">
     <input type="text" placeholder="Epost" name="Epost" value="<?php print $Epost; ?>">
     <input type="text" placeholder="Telefon" name="Telefon" value="<?php print $Telefon; ?>">
-    <input type="text" name="anv" placeholder="AnvändarID">
-    <input type="text" name="hash"placeholder="hash key">
     <input type="submit" value="submit">
 </form>
-</div>
 </body>
 </html>
 

@@ -12,7 +12,7 @@ $sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvna
 $result = mysqli_query($conn, $sql);
 
 //$hash = mt_rand(100000000, 999999999);
-$hash =123456;
+$hash = 123456;
 $tid = new DateTime('now');
 date_default_timezone_set("Europe/Stockholm");
 $tid = date('Y-m-d H:i:s');
@@ -27,7 +27,9 @@ if (mysqli_num_rows($result) > 0) {
     
     $sql = "UPDATE anvandare SET Hashkey = $hash, Inloggtid = '$tid' WHERE AnvandarID = $anvandarid";
     if(mysqli_query($conn, $sql)){
-        echo json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
+        //echo json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
+        //echo json_last_error();
+
     } else {
         echo $sql . mysqli_error($conn);
     }
