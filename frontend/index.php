@@ -75,7 +75,7 @@
 <?php
 if(isset($behorighet))
 if($behorighet == 1)
-echo '<form action="skapaanvandare.php" method="GET">
+echo '<form action="../skapaanvandare.php" method="GET">
     <input type="number" name="Behorighet">
     <input type="text" placeholder="Anvandarnamn" name="Anvnamn">
     <input type="password" placeholder="Losenord" name="Losen">

@@ -9,7 +9,7 @@
 <body>
 
 <div class="form">
-    <form action="../inputdatum.php" method="GET">
+    <form action="skapainlagg.php" method="GET">
         <input type="text" name="bloggid" placeholder="BloggID">
         <input type="text" name="rubrik" placeholder="Rubrik">
         <input type="text" name="innehall" placeholder="Innehåll">
