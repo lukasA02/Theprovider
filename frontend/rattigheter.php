@@ -60,7 +60,7 @@ mysqli_close($conn);
   <button class="knapp" onclick="runshiiiht3('anv','losen')">Visa Event!</button>
   
   <div class="form">
-    <form action="bjudain.php" method="GET">
+    <form action="../bjudain.php" method="GET">
        <input type="text" name="EventN" placeholder="eventets ID" >
        <input type="text" name="anvandarid" placeholder="id på vem du ska bjuda in">
        <input type="text" name="anv" placeholder="AnvändarID">

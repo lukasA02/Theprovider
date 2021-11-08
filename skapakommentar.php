@@ -10,7 +10,7 @@
 <body>
 
 <div class="form">
-    <form action="../inputdatum.php" method="GET">
+    <form action="skapakommentar.php" method="GET">
         <input type="text" name="inlaggid" placeholder="InläggsID">
         <input type="text" name="rubrik" placeholder="Rubrik">
         <input type="text" name="innehall" placeholder="Innehåll">

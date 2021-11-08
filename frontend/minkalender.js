@@ -5,7 +5,7 @@ function runshiiiht3(anv,losen){
         data: { anv: "TheAdmin", losen: "T000stef" }
       })
 
-
+      
       .done(function(result) {
         //här får jag svaret
         //"result" innehåller det som sidan svarar med, oftast då json

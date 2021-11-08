@@ -9,7 +9,7 @@
 <body>
 
 <div class="form">
-    <form action="../inputdatum.php" method="GET">
+    <form action="skapablogg.php" method="GET">
         <input type="text" name="anvandarid" placeholder="AnvändarID">
         <input type="text" name="last" placeholder="Låst? 0=nej 1=ja">
         <input type="text" name="beskrivning"placeholder="Beskrivning"> 
