@@ -1,14 +1,14 @@
-<?php 
+<?php
 require_once "../conn.php";
 require_once '../behorighet.php';
 
 
-$_GET['anv'] =1;
-$_GET['hash'] = 123456;
+// $_GET['anv'] =1;
+// $_GET['hash'] = 123456;
 
- /*$sql="INSERT INTO rattigheter 
+ /*$sql="INSERT INTO rattigheter
         VALUES (null,'2', '2')";
-    
+
         if (mysqli_query($conn, $sql)) {
             echo "True";
         } else {
@@ -21,8 +21,8 @@ $_GET['hash'] = 123456;
 
 if (mysqli_num_rows($result) > 0) {
   // output data of each row
-  
-  
+
+
   while($row = mysqli_fetch_assoc($result)) {
     //echo "id: " . $row["rattigheterID"]. " - Event: " . $row["EventID"]. " Använade: " . $row["AnvandarID"]. "<br>";
     $ratt = array("id"=>$row["rattigheterID"], "Event"=>$row["EventID"], "Användare"=>$row["AnvandarID"] );
@@ -58,13 +58,13 @@ mysqli_close($conn);
   <div id="resultat"></div>
 
   <button class="knapp" onclick="runshiiiht3('anv','losen')">Visa Event!</button>
-  
+
   <div class="form">
     <form action="../bjudain.php" method="GET">
-       <input type="text" name="EventN" placeholder="eventets ID" >
+       <input type="text" name="eventid" placeholder="eventets ID" >
        <input type="text" name="anvandarid" placeholder="id på vem du ska bjuda in">
-       <input type="text" name="anv" placeholder="AnvändarID">
-       <input type="text" name="hash"placeholder="hash key"> 
+       <input type="text" name="aid" placeholder="AnvändarID">
+       <input type="text" name="key" placeholder="hash key">
         <input type="submit" name="submit">
     </form>
     </div>
