@@ -1,23 +1,22 @@
 <?php
-require_once 'behorighet.php';
 require_once 'conn.php';
 require_once 'verifiera.php';
 
-$_GET['anv'] = 1;
-$_GET['hash'] = 123456789;
+// $_GET['anv'] = 1;
+// $_GET['hash'] = 123456789;
 
-if(isset($_GET['anv']) && isset($_GET['hash'])){
+if(isset($_GET['aid']) && isset($_GET['hash'])){
 
-  if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+  if(verifiera($_GET['hash'],$_GET['aid'])){
 
 // Användare
 $anvandarid=$_GET['anv'];
   $sql = "SELECT * FROM event WHERE Agare = '$anvandarid'";
   $sql2 = "SELECT event.EventID, event.Agare, event.Namn, event.Starttid, event.Sluttid, anvandare.Anvnamn FROM anvandare JOIN rattigheter ON rattigheter.AnvandarID=anvandare.AnvandarID JOIN event ON event.EventID=rattigheter.EventID WHERE anvandare.AnvandarID='$anvandarid  '";
   $result = mysqli_query($conn, $sql);
-  
+
   $events = array();
-      
+
   if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
           // echo "ID: " . $row["EventID"] . " Namn: " . $row["Namn"] . " Ägare: " . $row["Agare"] .
@@ -42,7 +41,7 @@ $anvandarid=$_GET['anv'];
     echo "0 results";
   }
   $result2 = mysqli_query($conn,$sql2);
-      
+
   if (mysqli_num_rows($result2) > 0) {
     while($row = mysqli_fetch_assoc($result2)) {
       //var_dump($row);
@@ -56,15 +55,15 @@ $anvandarid=$_GET['anv'];
     }
   }
   echo json_encode($events);
-  mysqli_close($conn);  
+  mysqli_close($conn);
 
 
   }else{
-    echo "felmedelande2";
+    echo "Går inte att logga in";
   }
 
 }else{
-  echo "felmedelande";
+  echo "Logga in";
 }
 
 

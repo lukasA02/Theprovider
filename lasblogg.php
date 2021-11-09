@@ -1,12 +1,11 @@
 <?php
-    require_once "behorighet.php";
     require_once "conn.php";
     require_once "verifiera.php";
 
 
-    if(isset($_GET['anv']) && isset($_GET['hash'])){
+    if(isset($_GET['aid']) && isset($_GET['hash'])){
 
-        if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+        if(verifiera($_GET['hash'],$_GET['aid'])){
 
     if(isset($behorighet)) {
         if($behorighet == 1) {
@@ -15,11 +14,11 @@
                 $last = $_GET['last'];
 
                 $sql = "UPDATE blogg SET last = $last WHERE BloggID = $bloggid";
-                
+
                 $blogg = array();
                 if (mysqli_query($conn, $sql)) {
                     array_push($blogg, array(
-                        "Result"=>true                  
+                        "Result"=>true
                     ));
                 } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -28,16 +27,18 @@
                 mysqli_close($conn);
             }
         }
+        else
+            echo "Välj bloggid och last";
     }
     else {
         echo "Logga in";
     }
 
     }else{
-        echo "felmedelande2";
+        echo "Det går inte att logga in";
     }
 
 }else{
-    echo "felmedelande";
+    echo "Logga in";
 }
 ?>

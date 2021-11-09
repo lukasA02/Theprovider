@@ -1,13 +1,12 @@
 <?php
 //input för event
 include 'conn.php';
-require_once 'behorighet.php';
 require_once 'verifiera.php';
 
-if(isset($_GET['anv']) && isset($_GET['hash'])){
-    
-    if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
-    
+if(isset($_GET['aid']) && isset($_GET['hash'])){
+
+    if(verifiera($_GET['hash'],$_GET['aid'])){
+
 if(isset ($_GET['submit']))
 {
     if(isset($_GET['namn']) && isset($_GET['starttid']) && isset($_GET['sluttid']))
@@ -24,7 +23,7 @@ if(isset ($_GET['submit']))
     } else {
         $sql="INSERT INTO event (namn, agare, starttid, sluttid)
         VALUES ('$namn', '$agare', '$start', '$slut')";
-    
+
         if (mysqli_query($conn, $sql)) {
             echo "Nytt event lagrat";
         } else {
@@ -51,7 +50,7 @@ die;
     // } else {
     //     $sql="INSERT INTO event (namn, agare, starttid, sluttid)
     //     VALUES ('$namn', '$agare', '$start', '$slut')";
-    
+
     //     if (mysqli_query($conn, $sql)) {
     //         echo "Nytt event lagrat";
     //     } else {
@@ -60,12 +59,12 @@ die;
     //     }
 
     //     mysqli_close($conn);
-    // }    
+    // }
     }else{
-        echo "Fuck you2";
+        echo "Går inte att logga in";
     }
 } else{
-    echo "Fuck you1";
+    echo "Logga in";
 }
 
 ?>

@@ -13,7 +13,7 @@
         <input type="text" name="bloggid" placeholder="BloggID">
         <input type="text" name="rubrik" placeholder="Rubrik">
         <input type="text" name="innehall" placeholder="Innehåll">
-        <input type="text" name="taggid" placeholder="TaggID"> 
+        <input type="text" name="taggid" placeholder="TaggID">
         <input type="submit" name="submit">
     </form>
     </div>
@@ -23,16 +23,15 @@
 
 
 <?php
-require_once "behorighet.php";
 require_once "conn.php";
 require_once 'verifiera.php';
 
-$_GET['anv'] =1;
-$_GET['hash'] = 123456;
+// $_GET['anv'] =1;
+// $_GET['hash'] = 123456;
 
-if(isset($_GET['anv']) && isset($_GET['hash'])){
+if(isset($_GET['aid']) && isset($_GET['hash'])){
 
-    if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+    if(verifiera($_GET['hash'],$_GET['aid'])){
 
 if(isset($_GET['bloggid'], $_GET['rubrik'], $_GET['innehall'])) {
     $bloggid = $_GET['bloggid'];
@@ -63,10 +62,10 @@ else{
     echo "Välj bloggid, rubrik och innehåll";}
 
 }else{
-    echo "felmedelande2";
+    echo "Omöjligt att logga in";
 }
 
 }else{
-    echo "felmedelande";
+    echo "Logga in";
 }
 ?>

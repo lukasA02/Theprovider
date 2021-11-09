@@ -1,10 +1,12 @@
 <?php
 require_once 'conn.php';
+require_once 'verifiera.php';
 
+if(isset($_GET['aid'], $_GET['hash'])) {
 // Specifik användare inlägg
-if(isset($_GET['aid'])) {
-  $aid = $_GET['aid'];
-  $sql = "SELECT BloggID FROM blogg WHERE AnvandarID = $aid";
+if(isset($_GET['anvandarid'])) {
+  $anvandarid = $_GET['anvandarid'];
+  $sql = "SELECT BloggID FROM blogg WHERE AnvandarID = $anvandarid";
   $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0) {
       while($row = mysqli_fetch_assoc($result)) {
@@ -14,7 +16,7 @@ if(isset($_GET['aid'])) {
     else
       echo "0 resultat";
   if(isset($bloggid)) {
-    echo "AAAAAAAAAAAAA";
+    // echo "AAAAAAAAAAAAA";
 
   $sql = "SELECT MeddelandeID, BloggID, TaggID, Tidsstampel, Rubrik, Innehall
   FROM meddelande WHERE BloggID = $bloggid AND InlaggID IS NULL";
@@ -107,4 +109,5 @@ $result = mysqli_query($conn, $sql);
 }
 }
 mysqli_close($conn);
+}
 ?>

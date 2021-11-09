@@ -3,12 +3,12 @@
     require_once "conn.php";
     require_once 'verifiera.php';
 
-    $_GET['anv'] =1;
-    $_GET['hash'] = 123456;
+    // $_GET['anv'] =1;
+    // $_GET['hash'] = 123456;
 
-    if(isset($_GET['anv']) && isset($_GET['hash'])){
+    if(isset($_GET['aid']) && isset($_GET['hash'])){
 
-        if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+        if(verifiera($_GET['hash'], $_GET['aid'])){
 
     if(isset($behorighet)) {
         if($behorighet == 1) {
@@ -16,7 +16,7 @@
                 $bloggid = $_GET['bloggid'];
 
                 $sql = "DELETE FROM blogg WHERE BloggID = $bloggid";
-                
+
                 $blogg = array();
                 if (mysqli_query($conn, $sql)) {
                     array_push($blogg, array(
