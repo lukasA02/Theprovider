@@ -93,4 +93,3 @@ $sql = "SELECT * FROM foretag";
     
     }
 ?>
-</html>

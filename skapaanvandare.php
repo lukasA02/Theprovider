@@ -18,14 +18,14 @@ if(isset($_GET["Behorighet"]) && isset($_GET["Enamn"]) && isset($_GET["Fnamn"]) 
 
 $uppercase = preg_match('@[A-Z]@', $Losen);
 $lowercase = preg_match('@[a-z]@', $Losen);
-$number    = preg_match('@[0-9]@', $Losen);
+
 
 $sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon)
 VALUES (null,'$Behorighet','$Anvnamn',MD5('$Losen'),'$Enamn','$Fnamn','$Epost','$Telefon')";
 
 
-if(!$uppercase || !$lowercase || !$number || strlen($Losen) < 8) {
-  echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number character.';
+if(!$uppercase || !$lowercase || strlen($Losen) < 25) {
+  echo 'ditt lösenord ska vara minst 25 karaktärer långt med stora och små bokstäver, tänkt dej att du gör en mening med ord som inte hör tillsammans ';
 }else{
   echo 'Strong password.';
   if (mysqli_query($conn, $sql)) {
