@@ -1,18 +1,17 @@
 <?php
-    require_once "behorighet.php";
     require_once "conn.php";
     require_once 'verifiera.php';
 
-    if(isset($_GET['anv']) && isset($_GET['hash'])){
+    if(isset($_GET['aid']) && isset($_GET['hash'])){
 
-        if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+        if(verifiera($_GET['hash'],$_GET['aid'])){
 
     if(isset($_GET['titel'], $_GET['bloggid'], $_GET['last'], $_GET['beskrivning'])) {
         $last = $_GET['last'];
         $bloggid = $_GET['bloggid'];
         $beskrivning = $_GET['beskrivning'];
         $titel = $_GET['titel'];
-        
+
         if(isset($_GET['taggid']))
             $taggid = $_GET['taggid'];
         else
@@ -35,10 +34,10 @@
         echo "Fyll i alla fält";}
 
     }else{
-        echo "felmeddelande2";
+        echo "Kan inte logga in";
     }
 
 } else{
-    echo "felmeddelande";
+    echo "Logga in";
 }
 ?>

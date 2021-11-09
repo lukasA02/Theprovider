@@ -1,13 +1,12 @@
 <?php
 
 require_once "conn.php";
-require_once "behorighet.php";
 require_once 'verifiera.php';
 
 echo $_GET['anvandarid'];
-if(isset($_GET['anv']) && isset($_GET['hash'])){
+if(isset($_GET['aid']) && isset($_GET['hash'])){
 
-  if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+  if(verifiera($_GET['hash'],$_GET['aid'])){
 
 if(isset($_GET["Anvnamn"]) && isset($_GET["Enamn"]) && isset($_GET["Fnamn"]) && isset($_GET["Epost"]) && isset($_GET["Telefon"])){
     $anvandarid = $_GET['anvandarid'];
@@ -33,10 +32,10 @@ if (mysqli_query($conn, $sql)) {
   }
 mysqli_close($conn);
   }else{
-    echo "fuck you 2";
+    echo "fuck you 2, skriv in rätt aid/hash";
   }
 }else{
-  echo "fuck you";
+  echo "fuck you, logga in";
 }
 
 ?>

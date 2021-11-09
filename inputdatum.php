@@ -1,11 +1,10 @@
-
 <?php
 include 'conn.php';
 include 'verifiera.php';
 
-if(isset($_GET['anv']) && isset($_GET['hash'])){
+if(isset($_GET['aid']) && isset($_GET['hash'])){
 
-    if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+    if(verifiera($_GET['hash'],$_GET['aid'])){
 
 if (isset($_GET['submit'])){
     $date = $_GET['date'];
@@ -17,19 +16,19 @@ if (isset($_GET['submit'])){
        // echo "Success!" . " <br> Namn: " . $row["Namn"] . "<br> Start: " . $row["Starttid"]. "<br> Slut: " . $row["Sluttid"]. "<br>";
        $dat = array("Namn"=>$row["Namn"], "Start"=>$row["Starttid"], "Slut"=>$row["Sluttid"] );
      echo json_encode($dat);
-      } 
-     
+      }
+
     mysqli_close($conn);
-    
+
     }
 }
     }else{
-        echo "felmedelande2";
+        echo "Det går inte att logga in";
     }
 
 
 }else{
-    echo "felmedelande";
+    echo "Logga in";
 }
 
 ?>

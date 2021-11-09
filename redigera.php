@@ -1,8 +1,10 @@
 <?php
 
-require_once "../conn.php";
+require_once "conn.php";
 require_once "../behorighet.php";
 
+if(isset($_GET['aid'], $_GET['hash'])) {
+  if(verifiera($_GET['aid'], $_GET['hash'])) {
 echo $anvandarid;
 $sql = "SELECT Anvnamn, Enamn, Fnamn, Epost, Telefon FROM anvandare Where anvandarid='$anvandarid'";
 
@@ -20,7 +22,13 @@ if (mysqli_num_rows($result) > 0) {
   echo "0 results";
 }
 
+}
+else
+  echo 'Omöjligt att logga in';
 mysqli_close($conn);
+}
+else
+  echo 'Logga in';
 ?>
 
 <!DOCTYPE html>

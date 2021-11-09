@@ -3,9 +3,9 @@
 require_once "conn.php";
 require_once "verifiera.php";
 
-if(isset($_GET['anv']) && isset($_GET['hash'])){
+if(isset($_GET['aid']) && isset($_GET['hash'])){
 
-  if(verifiera($_GET['hash'],$_GET['anv'])==TRUE ){
+  if(verifiera($_GET['hash'],$_GET['aid'])){
 
 if(isset($_GET["Behorighet"]) && isset($_GET["Enamn"]) && isset($_GET["Fnamn"]) && isset($_GET["Epost"]) && isset($_GET["Telefon"])){
     $Behorighet = $_GET["Behorighet"];
@@ -20,7 +20,7 @@ $uppercase = preg_match('@[A-Z]@', $Losen);
 $lowercase = preg_match('@[a-z]@', $Losen);
 $number    = preg_match('@[0-9]@', $Losen);
 
-$sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon) 
+$sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon)
 VALUES (null,'$Behorighet','$Anvnamn',MD5('$Losen'),'$Enamn','$Fnamn','$Epost','$Telefon')";
 
 
@@ -36,7 +36,7 @@ if(!$uppercase || !$lowercase || !$number || strlen($Losen) < 8) {
 }
 
 
-$sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon) 
+$sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon)
 VALUES (null,'$Behorighet','$Anvnamn',MD5('$Losen'),'$Enamn','$Fnamn','$Epost','$Telefon')";
 
 /*if (mysqli_query($conn, $sql)) {
@@ -55,10 +55,10 @@ echo "Fyll i alla fält";
 // $stmt->execute();
 // $stmt->close();
 }else{
-  echo "felmeddelnade2";
+  echo "Går inte att logga in";
 }
 
 }else{
-  echo "felmeddelnade";
+  echo "Logga in";
 }
 ?>
