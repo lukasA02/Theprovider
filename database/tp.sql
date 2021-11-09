@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 22 okt 2021 kl 13:53
+-- Tid vid skapande: 09 nov 2021 kl 09:44
 -- Serverversion: 10.4.20-MariaDB
 -- PHP-version: 8.0.9
 
@@ -106,23 +106,19 @@ INSERT INTO `event` (`EventID`, `Namn`, `Agare`, `Starttid`, `Sluttid`) VALUES
 --
 
 CREATE TABLE `foretag` (
-  `farg` varchar(7) NOT NULL,
+  `id` int(11) NOT NULL,
   `fil` varbinary(35) NOT NULL,
-  `bak` varbinary(35) NOT NULL
+  `bak` varbinary(35) NOT NULL,
+  `css` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumpning av Data i tabell `foretag`
 --
 
-INSERT INTO `foretag` (`farg`, `fil`, `bak`) VALUES
-('#ffffff', 0x706c616365686f6c6465722e706e67, 0x706c616365686f6c6465722e706e67),
-('#ffffff', 0x706c616365686f6c6465722e706e67, 0x706c616365686f6c6465722e706e67),
-('#ffffff', 0x706c616365686f6c6465722e706e67, 0x706c616365686f6c6465722e706e67),
-('#ffffff', 0x706c616365686f6c6465722e706e67, 0x706c616365686f6c6465722e706e67),
-('#ffffff', 0x706c616365686f6c6465722e706e67, 0x706c616365686f6c6465722e706e67),
-('', '', ''),
-('#ffffff', '', '');
+INSERT INTO `foretag` (`id`, `fil`, `bak`, `css`) VALUES
+(9, '', '', ''),
+(10, '', '', 'echo \'<style> \r\n    body {background-color: #ff69B4; font-family:Comic Sans MS;font-size:26px;}\r\n    </style>\'');
 
 -- --------------------------------------------------------
 
@@ -213,6 +209,12 @@ ALTER TABLE `event`
   ADD KEY `foreign key anvandare` (`Agare`);
 
 --
+-- Index för tabell `foretag`
+--
+ALTER TABLE `foretag`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index för tabell `meddelande`
 --
 ALTER TABLE `meddelande`
@@ -256,6 +258,12 @@ ALTER TABLE `blogg`
 --
 ALTER TABLE `event`
   MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT för tabell `foretag`
+--
+ALTER TABLE `foretag`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT för tabell `meddelande`
