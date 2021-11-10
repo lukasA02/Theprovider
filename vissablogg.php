@@ -31,20 +31,4 @@ if(isset($_GET['aid'], $_GET['hash'], $_GET['BloggID'])){
 }else{
   echo "Välj aid, hash och BloggID";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

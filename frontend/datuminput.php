@@ -14,8 +14,8 @@ require_once '../behorighet.php';
     <div class="form">
     <form action="../inputdatum.php" method="GET">
         <input type="date" name="date">
-        <input type="text" name="anv" placeholder="AnvändarID">
-       <input type="text" name="hash"placeholder="hash key"> 
+        <input type="text" name="aid" placeholder="AnvändarID">
+       <input type="text" name="hash" placeholder="hash key"> 
        <input type="submit" name="submit">
     </form>
     </div>
