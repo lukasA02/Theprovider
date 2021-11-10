@@ -1,6 +1,11 @@
 <?php
 
 require_once '../conn.php';
+require_once '../verifiera.php';
+
+if(isset($_GET['aid']) && isset($_GET['hash'])){
+
+  if(verifiera($_GET['hash'],$_GET['aid'])){
 
 if(isset($_GET['anv']) && isset($_GET['losen'])) {
     $username = $_GET['anv'];
@@ -20,12 +25,12 @@ if(isset($_GET['LosenTxt'])) {
 
 $uppercase = preg_match('@[A-Z]@', $NyttLosen);
 $lowercase = preg_match('@[a-z]@', $NyttLosen);
-$number    = preg_match('@[0-9]@', $NyttLosen);
+
 
 $sql = "UPDATE anvandare SET Losen = MD5('$NyttLosen') WHERE  anvandarid = 1";
 
 
-if(!$uppercase || !$lowercase || !$number || strlen($NyttLosen) < 8) {
+if(!$uppercase || !$lowercase || strlen($NyttLosen) < 25) {
   echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number character.';
 }else{
   echo 'Strong password.';
@@ -35,6 +40,12 @@ if(!$uppercase || !$lowercase || !$number || strlen($NyttLosen) < 8) {
   }
 }
 
+}else{
+  echo "fuck you 2, skriv in rätt aid/hash";
+}
+}else{
+echo "fuck you, logga in";
+}
 
 ?>
 

@@ -44,6 +44,8 @@ $DittId = $result -> num_rows;
     <input type="number" name="DittID" value="<?php echo $DittId?>">
     Ange ditt nya lösenord
     <input type="text" name="LosenTxt">
+    <input type="text" name="aid" placeholder="AnvändarID">
+    <input type="text" name="hash" placeholder="hash key">
     <input type="submit" value="submit">
 </form>
 </body>
