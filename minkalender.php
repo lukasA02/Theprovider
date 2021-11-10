@@ -10,7 +10,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
   if(verifiera($_GET['hash'],$_GET['aid'])){
 
 // Användare
-$anvandarid=$_GET['anv'];
+$anvandarid=$_GET['aid'];
   $sql = "SELECT * FROM event WHERE Agare = '$anvandarid'";
   $sql2 = "SELECT event.EventID, event.Agare, event.Namn, event.Starttid, event.Sluttid, anvandare.Anvnamn FROM anvandare JOIN rattigheter ON rattigheter.AnvandarID=anvandare.AnvandarID JOIN event ON event.EventID=rattigheter.EventID WHERE anvandare.AnvandarID='$anvandarid  '";
   $result = mysqli_query($conn, $sql);

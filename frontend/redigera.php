@@ -41,8 +41,8 @@ mysqli_close($conn);
     <input type="text" placeholder="Fornamn" name="Fnamn" value="<?php print $Fnamn; ?>">
     <input type="text" placeholder="Epost" name="Epost" value="<?php print $Epost; ?>">
     <input type="text" placeholder="Telefon" name="Telefon" value="<?php print $Telefon; ?>">
-    <input type="text" name="anv" placeholder="AnvändarID">
-    <input type="text" name="hash"placeholder="hash key">
+    <input type="text" name="aid" placeholder="AnvändarID">
+    <input type="text" name="hash" placeholder="hash key">
     <input type="submit" value="submit">
 </form>
 </div>

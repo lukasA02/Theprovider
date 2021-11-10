@@ -14,8 +14,8 @@ require_once '../behorighet.php';
 <form action="../vissablogg.php" method="GET">
 
     <input type="number" name="BloggID" placeholder="Blogg ID">
-    <input type="text" name="anv" placeholder="AnvändarID">
-    <input type="text" name="hash"placeholder="hash key">
+    <input type="text" name="aid" placeholder="AnvändarID">
+    <input type="text" name="hash" placeholder="hash key">
     <input type="submit" value="submit">
 </form>
     
