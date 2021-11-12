@@ -1,18 +1,15 @@
-function runshiiiht3(anv,losen){
+function runshiiiht3(aid,hash){
     var jqxhr = $.ajax({
         method: "GET",
         url: "../minkalender.php",
-        data: { anv: "TheAdmin", losen: "T000stef" }
+        data: { aid: 1, hash: 123456789 }
       })
 
-      
+
       .done(function(result) {
         //här får jag svaret
         //"result" innehåller det som sidan svarar med, oftast då json
 
-        console.log(result);
-        console.log(result.slice(0, 28)); // {"aid":"1","hash":000000000}
-        result = result.replace(result.slice(0, 28), "");
         console.log(result);
         const obj = JSON.parse(result);
         console.log(obj);
