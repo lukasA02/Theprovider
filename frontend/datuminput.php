@@ -11,11 +11,24 @@ require_once '../behorighet.php';
     <link rel="stylesheet" href="style-gen.css">
 </head>
 <body>
+<iframe src="ram.php" style="
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            width: 230px;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 999999;
+            height: 100px;
+        "></iframe>
     <div class="form">
     <form action="../inputdatum.php" method="GET">
         <input type="date" name="date">
         <input type="text" name="aid" placeholder="AnvändarID">
-       <input type="text" name="hash" placeholder="hash key"> 
+       <input type="text" name="hash" placeholder="hash key">
        <input type="submit" name="submit">
     </form>
     </div>

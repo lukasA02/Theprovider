@@ -55,6 +55,19 @@ mysqli_close($conn);
 </head>
 
 <body>
+<iframe src="ram.php" style="
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            width: 230px;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 999999;
+            height: 100px;
+        "></iframe>
   <div id="resultat"></div>
 
   <button class="knapp" onclick="runshiiiht3('anv','losen')">Visa Event!</button>
