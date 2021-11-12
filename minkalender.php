@@ -8,7 +8,7 @@ require_once 'verifiera.php';
 if(isset($_GET['aid']) && isset($_GET['hash'])){
 
   if(verifiera($_GET['hash'],$_GET['aid'])){
-
+    if($behorighet == 1) {
 // Användare
 $anvandarid=$_GET['aid'];
   $sql = "SELECT * FROM event WHERE Agare = '$anvandarid'";
@@ -57,7 +57,9 @@ $anvandarid=$_GET['aid'];
   echo json_encode($events);
   mysqli_close($conn);
 
-
+    }
+    else
+      echo "Du är inte admin";
   }else{
     echo "Går inte att logga in";
   }
