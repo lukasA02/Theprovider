@@ -18,7 +18,7 @@
 </div>
     </form>
     <div class="link">
-  
+
     <header class="top"></header>
     <a href="event.php">Redigera event</a><br>
     <a href="datuminput.php">Visa specifik dag</a><br>
@@ -27,15 +27,27 @@
     <a href="rattigheter.php?anv=TheAdmin&losen=T000stef">Bjuda in</a><br>
     <a href="redigera.php?anv=TheAdmin&losen=T000stef">Redigera användare</a><br>
     <a href="visaannan.php?anv=TheAdmin&losen=T000stef">Andras event</a><br>
-    
+
 
     </div>
+
+        <iframe src="ram.php" style="
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            width: 230px;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 999999;
+            height: 100px;
+        "></iframe>
 
     <div class="inlogg">
     <?php
     require_once '../behorighet.php';
-    
-
 
     if(isset($behorighet)) {
         switch ($behorighet) {
@@ -54,7 +66,7 @@
     else
         echo "Du är inte inloggad";
     ?>
-    
+
     </div>
 
 
@@ -66,8 +78,8 @@
     <input type="datetime-local" name="starttid" require>
     <label for="sluttid">Sluttid:</label>
     <input type="datetime-local" name="sluttid" require>
-    <input type="text" name="anv">
-    <input type="text" name="hash">
+    <input type="text" name="aid" placeholder="Användarid">
+    <input type="text" name="hash" placeholder="Hash key">
     <input type="submit" name="submit" value="submit">
 
 </form>
