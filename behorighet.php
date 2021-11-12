@@ -1,6 +1,7 @@
 <?php
 // anslut
 require_once 'conn.php';
+session_start();
 
 if(isset($_GET['anv']) && isset($_GET['losen'])) {
     $username = $_GET['anv'];
@@ -24,16 +25,17 @@ if (mysqli_num_rows($result) > 0) {
         $behorighet = $row["Behorighet"];
         // echo $anvandarid;
     }
-    
+
     $sql = "UPDATE anvandare SET Hashkey = $hash, Inloggtid = '$tid' WHERE AnvandarID = $anvandarid";
     if(mysqli_query($conn, $sql)){
-        echo json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
+        //echo json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
+        $_SESSION['mm'] = json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
         //echo json_last_error();
 
     } else {
         echo $sql . mysqli_error($conn);
     }
-    
+
 
 
 }
@@ -43,7 +45,7 @@ if(isset($_GET['anv']) && isset($_GET['hash'])) {
     $hash = $_GET['hash'];
 }
 
-$sql = "SELECT AnvandarID, Behorighet, Anvnamn, Hashkey, Inloggtid FROM anvandare WHERE 
+$sql = "SELECT AnvandarID, Behorighet, Anvnamn, Hashkey, Inloggtid FROM anvandare WHERE
 Anvnamn = '$username' && Hashkey = '$hash' && Inloggtid > DATE_SUB(now(), INTERVAL 10 MINUTE)";
 $result = mysqli_query($conn, $sql);
 
