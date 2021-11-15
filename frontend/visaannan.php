@@ -13,12 +13,25 @@ require_once '../behorighet.php';
     <title>Visa när andra är upptagna</title>
 </head>
 <body>
+<iframe src="ram.php" style="
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            width: 230px;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 999999;
+            height: 100px;
+        "></iframe>
     <div class="asd">
 
    <p> Ange ett ID </p>
 </div>
-    
-<div class="form">    
+
+<div class="form">
 <form action="visarn.php" method="GET">
     <input type="number" name="VisarID">
     <input type="text" name="aid" placeholder="AnvändarID">

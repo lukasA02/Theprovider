@@ -33,6 +33,19 @@ mysqli_close($conn);
     <link rel="stylesheet" href="style-gen.css">
 </head>
 <body>
+<iframe src="ram.php" style="
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            width: 230px;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 999999;
+            height: 100px;
+        "></iframe>
   <div class="form">
 <form action="../redigeraanvandare.php" method="GET">
     <input type="hidden" name="anvandarid" value="<?php echo $anvandarid; ?>">

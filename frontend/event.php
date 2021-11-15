@@ -8,6 +8,19 @@
         <link rel="stylesheet" href="style-gen.css">
     </head>
     <body>
+    <iframe src="ram.php" style="
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            width: 230px;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 999999;
+            height: 100px;
+        "></iframe>
       <div class="form">
         <form action="" method="GET">
             <input type="text" name="aid" placeholder="Användarid" required>
@@ -34,7 +47,7 @@ if(isset($_GET['hash'], $_GET['aid'])) {
     if(isset($_GET['tabort'])){
         $evid = $_GET['evid'];
         $sql = "DELETE FROM event WHERE EventID= $evid";
-        
+
         if (mysqli_query($conn, $sql)) {
             echo " Event uppdaterat";
           } else {
@@ -48,8 +61,8 @@ if(isset($_GET['hash'], $_GET['aid'])) {
         $namn = $_GET['namn'];
         $sttid = $_GET['starttid'];
         $sltid = $_GET['sluttid'];
-        
-        if(isset($_GET['namn']) && isset($_GET['starttid']) && isset($_GET['sluttid'])){ 
+
+        if(isset($_GET['namn']) && isset($_GET['starttid']) && isset($_GET['sluttid'])){
             $sql = "UPDATE event SET Namn = '$namn', Starttid ='$sttid', Sluttid='$sltid' WHERE EventID = $evid";
         }
 
