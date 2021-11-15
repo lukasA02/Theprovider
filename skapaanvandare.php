@@ -24,8 +24,8 @@ $sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Ep
 VALUES (null,'$Behorighet','$Anvnamn',MD5('$Losen'),'$Enamn','$Fnamn','$Epost','$Telefon')";
 
 
-if(!$uppercase || !$lowercase || strlen($Losen) < 25) {
-  echo 'ditt lösenord ska vara minst 25 karaktärer långt med stora och små bokstäver, tänkt dej att du gör en mening med ord som inte hör tillsammans ';
+if(!$uppercase || !$lowercase || strlen($Losen) < 8) {
+  echo 'ditt lösenord ska vara minst 25 tecken långt med stora och små bokstäver, tänkt dej att du gör en mening med ord som inte hör tillsammans ';
 }else{
   echo 'Strong password.';
   if (mysqli_query($conn, $sql)) {

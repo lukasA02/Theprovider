@@ -30,8 +30,8 @@ $lowercase = preg_match('@[a-z]@', $NyttLosen);
 $sql = "UPDATE anvandare SET Losen = MD5('$NyttLosen') WHERE  anvandarid = 1";
 
 
-if(!$uppercase || !$lowercase || strlen($NyttLosen) < 25) {
-  echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number character.';
+if(!$uppercase || !$lowercase || strlen($NyttLosen) < 8) {
+  echo 'Password should be at least 8 tecken in length and should include at least one upper case letter, one number character.';
 }else{
   echo 'Strong password.';
   if (mysqli_query($conn, $sql)) {
