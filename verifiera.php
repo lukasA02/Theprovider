@@ -4,10 +4,11 @@ require_once "conn.php";
 function verifiera($key,$aid) {
 $sql = "SELECT AnvandarID, Behorighet, Anvnamn, Hashkey, Inloggtid FROM anvandare WHERE
 AnvandarID = $aid && Hashkey = $key";
-//&& Inloggtid > DATE_SUB(now(), INTERVAL 10 MINUTE)
+//&& Inloggtid > DATE_SUB(now(), INTERVAL 15 MINUTE)
 // ?????????
 global $conn;
 global $behorighet;
+
 $result = mysqli_query($conn, $sql);
 
 if(mysqli_num_rows($result) == 1) {
@@ -33,7 +34,6 @@ if(mysqli_num_rows($result) == 1) {
     else {
         return false;
 }
-// Kolla datumstämpel och uppdatera den
-// js
 }
+verifiera(123456789, 1);
 ?>
