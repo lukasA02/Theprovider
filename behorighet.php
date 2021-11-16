@@ -12,12 +12,11 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
 $sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password'";
 $result = mysqli_query($conn, $sql);
 
-//$hash = mt_rand(100000000, 999999999);
+// $hash = mt_rand(100000000, 999999999);
 $hash = 123456789;
 $tid = new DateTime('now');
 date_default_timezone_set("Europe/Stockholm");
 $tid = date('Y-m-d H:i:s');
-
 
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
@@ -26,18 +25,22 @@ if (mysqli_num_rows($result) > 0) {
         // echo $anvandarid;
     }
 
-    $sql = "UPDATE anvandare SET Hashkey = $hash, Inloggtid = '$tid' WHERE AnvandarID = $anvandarid";
-    if(mysqli_query($conn, $sql)){
-        //echo json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
-        $_SESSION['mm'] = json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
-        //echo json_last_error();
+    $sql = "SELECT Hashkey, Inloggtid FROM anvandare WHERE
+    AnvandarID = $anvandarid && Inloggtid < DATE_SUB(now(), INTERVAL 15 MINUTE)";
+    $result = mysqli_query($conn, $sql);
 
-    } else {
-        echo $sql . mysqli_error($conn);
+    if(mysqli_num_rows($result) > 0) {
+        $sql = "UPDATE anvandare SET Hashkey = $hash, Inloggtid = '$tid' WHERE AnvandarID = $anvandarid";
+        $result = mysqli_query($conn, $sql);
     }
 
-
-
+    // if(mysqli_query($conn, $sql)){
+    //     //echo json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
+    //     // $_SESSION['mm'] = json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
+    //     //echo json_last_error();
+    // } else {
+    //     echo $sql . mysqli_error($conn);
+    // }
 }
 
 if(isset($_GET['anv']) && isset($_GET['hash'])) {
