@@ -23,7 +23,7 @@
     // output data of each row
         while($row = mysqli_fetch_assoc($result)) {
             //echo "<br> Ägare: " . $row["agare"]. "<br> Start: " . $row["starttid"]. "<br> Slut: " . $row["sluttid"]. "<br>";
-            $visa = array("Ägare"=>$row["agare"], "Start"=>$row["Starttid"], "Slut"=>$row["Sluttid"] );
+            $visa = array("Eventnamn"=>$row["namn"],"Ägare"=>$row["agare"], "Start"=>$row["Starttid"], "Slut"=>$row["Sluttid"] );
      echo json_encode($visa);
         }
     } else {
