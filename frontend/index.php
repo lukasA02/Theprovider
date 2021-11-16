@@ -22,11 +22,14 @@
     <header class="top"></header>
     <a href="event.php">Redigera event</a><br>
     <a href="datuminput.php">Visa specifik dag</a><br>
-    <a href="testin.html?anv=TheAdmin&losen=T000stef">Mina event</a><br>
-    <a href="../minkalender.php?anv=TheAdmin&losen=T000stef">Visa event (json)</a><br>
-    <a href="rattigheter.php?anv=TheAdmin&losen=T000stef">Bjuda in</a><br>
-    <a href="redigera.php?anv=TheAdmin&losen=T000stef">Redigera användare</a><br>
-    <a href="visaannan.php?anv=TheAdmin&losen=T000stef">Andras event</a><br>
+    <a href="testin.html?aid=&hash=">Mina event</a><br>
+    <a href="../minkalender.php?aid=&hash=">Visa event (json)</a><br>
+    <a href="rattigheter.php?aid=&hash=">Bjuda in</a><br>
+    <a href="redigera.php?anv=&losen=">Redigera användare</a><br>
+    <a href="visaannan.php?aid=&hash=">Andras event</a><br>
+    <a href="aterstall.php?anv=&losen=">återställ lösenord</a><br>
+    <a href="foretag.php">ändra företags profile</a><br>
+
 
 
     </div>
@@ -48,6 +51,7 @@
     <div class="inlogg">
     <?php
     require_once '../behorighet.php';
+    
 
     if(isset($behorighet)) {
         switch ($behorighet) {
@@ -95,6 +99,8 @@ echo '<form action="../skapaanvandare.php" method="GET">
     <input type="text" placeholder="Fornamn" name="Fnamn">
     <input type="text" placeholder="Epost" name="Epost">
     <input type="text" placeholder="Telefon" name="Telefon">
+    <input type="text" name="aid" placeholder="Användarid">
+    <input type="text" name="hash" placeholder="Hash key">
     <input type="submit" value="submit">
 </form>';
 ?>

@@ -35,8 +35,8 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
     if($behorighet == 1) {
 // Användare
   $anvandarid=$_GET['aid'];
-  $sql = "SELECT * FROM event WHERE Agare = '$anvandarid'";
-  $sql2 = "SELECT event.EventID, event.Agare, event.Namn, event.Starttid, event.Sluttid, anvandare.Anvnamn FROM anvandare JOIN rattigheter ON rattigheter.AnvandarID=anvandare.AnvandarID JOIN event ON event.EventID=rattigheter.EventID WHERE anvandare.AnvandarID='$anvandarid  '";
+  $sql = "SELECT * FROM event";
+  $sql2 = "SELECT event.EventID, event.Agare, event.Namn, event.beskrivning, event.Starttid, event.Sluttid, anvandare.Anvnamn FROM anvandare JOIN rattigheter ON rattigheter.AnvandarID=anvandare.AnvandarID JOIN event ON event.EventID=rattigheter.EventID WHERE anvandare.AnvandarID='$anvandarid  '";
   $result = mysqli_query($conn, $sql);
 
   $events = array();
@@ -56,6 +56,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
       array_push($events, array(
         "ID"=>$row["EventID"],
         "Namn"=>$row["Namn"],
+        "beskrivning"=>$row["beskrivning"],
         "Agare"=>$row["Agare"],
         "Starttid"=>$row["Starttid"],
         "Sluttid"=>$row["Sluttid"]
@@ -72,6 +73,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
       array_push($events, array(
         "ID"=>$row["EventID"],
         "Namn"=>$row["Namn"],
+        "beskrivning"=>$row["beskrivning"],
         "Agare"=>$row["Agare"],
         "Starttid"=>$row["Starttid"],
         "Sluttid"=>$row["Sluttid"]

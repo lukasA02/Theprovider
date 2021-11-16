@@ -23,14 +23,15 @@
         "></iframe>
       <div class="form">
         <form action="" method="GET">
-            <input type="text" name="aid" placeholder="Användarid" required>
-            <input type="text" name="hash" placeholder="Hashnyckel" required>
+            <input type="text" name="aid" placeholder="Användarid"  required>
+            <input type="text" name="hash" placeholder="Hashnyckel"  required>
             <input type="text" name="evid" placeholder="EventID" required>
-            <input type="text" name="namn" placeholder="Nytt namn på event">
+            <input type="text" name="namn" placeholder="Nytt namn på event" >
+            <input type="Text" name="beskrivning" placeholder="ändra beskrivningen" >
             <label for="starttid">Ny starttid</label>
-            <input type="datetime-local" name="starttid">
+            <input type="datetime-local" name="starttid" >
             <label for="sluttid">Ny sluttid</label>
-            <input type="datetime-local" name="sluttid">
+            <input type="datetime-local" name="sluttid" >
             <label for="delete">Ta bort event?
             <button type="submit" name="tabort" >tabort</button>
             <input type="submit" name="submit">
@@ -59,11 +60,12 @@ if(isset($_GET['hash'], $_GET['aid'])) {
     if(isset($_GET['submit'])){
         $evid = $_GET['evid'];
         $namn = $_GET['namn'];
+        $beskrivning = $_GET["beskrivning"];
         $sttid = $_GET['starttid'];
         $sltid = $_GET['sluttid'];
 
         if(isset($_GET['namn']) && isset($_GET['starttid']) && isset($_GET['sluttid'])){
-            $sql = "UPDATE event SET Namn = '$namn', Starttid ='$sttid', Sluttid='$sltid' WHERE EventID = $evid";
+            $sql = "UPDATE event SET Namn = '$namn', beskrivning = '$beskrivning' Starttid ='$sttid', Sluttid='$sltid' WHERE EventID = $evid";
         }
 
     if (mysqli_query($conn, $sql)) {

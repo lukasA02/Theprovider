@@ -41,10 +41,10 @@ if(!$uppercase || !$lowercase || strlen($NyttLosen) < 8) {
 }
 
 }else{
-  echo "fuck you 2, skriv in rätt aid/hash";
+  echo " skriv in rätt aid/hash";
 }
 }else{
-echo "fuck you, logga in";
+echo " logga in";
 }
 
 ?>
