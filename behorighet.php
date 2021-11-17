@@ -9,7 +9,7 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
     $password = MD5($password);
 }
 
-$sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password'";
+$sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password' && locked IS NULL";
 $result = mysqli_query($conn, $sql);
 
 // $hash = mt_rand(100000000, 999999999);
