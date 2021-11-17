@@ -15,21 +15,78 @@
             if(isset($_GET['bloggid'])) {
                 $bloggid = $_GET['bloggid'];
 
-                $sql = "DELETE FROM blogg WHERE BloggID = $bloggid";
+                if(isset($_GET['tabort'])){
 
-                $blogg = array();
-                if (mysqli_query($conn, $sql)) {
-                    array_push($blogg, array(
-                        "Result"=>true,
-                    ));
-                } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    $sql = "DELETE FROM blogg WHERE BloggID = $bloggid";
+
+                    $blogg = array();
+                    if (mysqli_query($conn, $sql)) {
+                        array_push($blogg, array(
+                            "Result"=>true,
+                        ));
+                    } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                    echo json_encode($blogg);
+
                 }
-                echo json_encode($blogg);
+
+                if(isset($_GET['last'])){
+
+                  
+
+                    $sql2 = "UPDATE blogg SET Last='1' WHERE BloggID =  $bloggid ";
+
+                    $blogg1 = array();
+                    if (mysqli_query($conn, $sql2)) {
+                        array_push($blogg1, array(  
+                            "Result"=>true,
+                        ));
+                    } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                    echo json_encode($blogg1);
+                
+             
+                }
+
+                if(isset($_GET['lastupp'])){
+
+                  
+
+                    $sql3 = "UPDATE blogg SET Last='0' WHERE BloggID =  $bloggid ";
+
+                    $blogg2 = array();
+                    if (mysqli_query($conn, $sql3)) {
+                        array_push($blogg2, array(  
+                            "Result"=>true,
+                        ));
+                    } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                    echo json_encode($blogg2);
+                
+             
+
+                }
+
+
+                
+
+                
                 mysqli_close($conn);
+
+               
             }
+
+        
+
+
         }
+
     }
+
+
     else{
         echo "Logga in";}
 
