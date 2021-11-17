@@ -3,7 +3,7 @@ require_once "conn.php";
 
 function verifiera($key,$aid) {
 $sql = "SELECT AnvandarID, Behorighet, Anvnamn, Hashkey, Inloggtid FROM anvandare WHERE
-AnvandarID = $aid && Hashkey = $key";
+AnvandarID = $aid && Hashkey = $key && locked IS NULL";
 //&& Inloggtid > DATE_SUB(now(), INTERVAL 15 MINUTE)
 // ?????????
 global $conn;
