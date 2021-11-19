@@ -35,5 +35,4 @@ if(mysqli_num_rows($result) == 1) {
         return false;
 }
 }
-verifiera(123456789, 1);
 ?>
