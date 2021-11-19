@@ -4,9 +4,9 @@ require_once 'verifiera.php';
 
 if(isset($_GET['aid'], $_GET['hash'])){
  
-  if(verifiera($_GET['hash'], $_GET['aid']) && $behorighet ==  1) {
+  if(verifiera($_GET['hash'], $_GET['aid']) && $behorighet ==  3) {
 
-    $sql = "SELECT Titel, Beskrivning, AnvandarID FROM blogg ";
+    $sql = "SELECT Titel, Beskrivning, AnvandarID FROM blogg WHERE Rattigheter= 1";
     $result = mysqli_query($conn, $sql);
     if (mysqli_query($conn, $sql)) {
         while($row = mysqli_fetch_array($result)) {
@@ -15,7 +15,7 @@ if(isset($_GET['aid'], $_GET['hash'])){
       }
     }
 
-    $sql = "SELECT InlaggID, Rubrik, Innehall FROM meddelande ";
+    $sql = "SELECT InlaggID, Rubrik, Innehall FROM meddelande  ";
     $result = mysqli_query($conn,$sql);
     if (mysqli_query($conn, $sql)) {
         while($row = mysqli_fetch_array($result)) {
