@@ -17,18 +17,26 @@
         else
             $taggid = 'NULL';
 
-        $sql = "UPDATE blogg SET TaggID = $taggid, Last = $last, Beskrivning = '$beskrivning', Titel = '$titel' WHERE BloggID = $bloggid";
+            $sql = "SELECT * FROM blogg WHERE BloggID = $bloggid";
+            $result = mysqli_query($conn, $sql);
 
-        $blogg = array();
-        if (mysqli_query($conn, $sql)) {
-            array_push($blogg, array(
-                "Result"=>true
-              ));
-        } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-        echo json_encode($blogg);
-        mysqli_close($conn);
+            if (mysqli_num_rows($result) > 0) {
+                $sql = "UPDATE blogg SET TaggID = $taggid, Last = $last, Beskrivning = '$beskrivning', Titel = '$titel' WHERE BloggID = $bloggid";
+
+                $blogg = array();
+                if (mysqli_query($conn, $sql)) {
+                    array_push($blogg, array(
+                        "Result"=>true
+                    ));
+                } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+                echo json_encode($blogg);
+                mysqli_close($conn);
+            } else {
+              echo json_encode(array("Fel"));
+            }
+        
     }
     else{
         echo "Fyll i alla fält";}
