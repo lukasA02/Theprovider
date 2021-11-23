@@ -15,7 +15,7 @@ if(isset($_GET['hash'], $_GET['aid'])) {
             $rattigheter = $_GET['rattigheter'];
             if($rattigheter <= 2 && $rattigheter >= 0) {
                 
-                $sql = "UPDATE blogg SET Rattigheter = $rattigheter WHERE AnvandarID = $aid";
+                $sql = "UPDATE blogg SET Rattigheter = $rattigheter WHERE bloggid = $bloggid";
                 
                 $vs = array();
                 if (mysqli_query($conn, $sql)) {

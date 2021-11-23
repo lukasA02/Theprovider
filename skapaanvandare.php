@@ -25,7 +25,7 @@ VALUES (null,'$Behorighet','$Anvnamn',MD5('$Losen'),'$Enamn','$Fnamn','$Epost','
 
 
 if(!$uppercase || !$lowercase || strlen($Losen) < 8) {
-  echo 'ditt lösenord ska vara minst 25 tecken långt med stora och små bokstäver, tänkt dej att du gör en mening med ord som inte hör tillsammans ';
+  echo 'ditt lösenord ska vara minst 8 tecken långt med stora och små bokstäver, tänkt dej att du gör en mening med ord som inte hör tillsammans ';
 }else{
   echo 'Strong password.';
   if (mysqli_query($conn, $sql)) {
