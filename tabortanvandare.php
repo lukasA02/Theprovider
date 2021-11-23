@@ -1,16 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ta bort Anvandare!</title>
-</head>
-<body>
 <?php
-
-require_once "conn.php";
 require_once 'verifiera.php';
 
 if(isset($_GET['aid'], $_GET['hash'])) {
@@ -25,8 +13,6 @@ if(isset($_GET['aid'], $_GET['hash'])) {
                   } else {
                     echo "Fel: " . $sql . "<br>" . mysqli_error($conn);
                   }
-                
-
                 mysqli_close($conn);
             } else{
                 echo "Inget anvid";
@@ -41,5 +27,3 @@ if(isset($_GET['aid'], $_GET['hash'])) {
     }
 }
 ?>
-</body>
-</html>
