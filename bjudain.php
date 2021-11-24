@@ -2,7 +2,7 @@
 require_once "conn.php";
 require_once "verifiera.php";
 
-if(isset($_GET["eventid"], $_GET["key"], $_GET["aid"], $_GET["anvandarid"])) {
+if(isset($_GET["eventid"], $_GET["hash"], $_GET["aid"], $_GET["anvandarid"])) {
   if(verifiera($_GET["key"], $_GET["aid"])) {
 
     $EN = $_GET["eventid"];

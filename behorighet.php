@@ -34,13 +34,7 @@ if (mysqli_num_rows($result) > 0) {
         $result = mysqli_query($conn, $sql);
     }
 
-    // if(mysqli_query($conn, $sql)){
-    //     //echo json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
-    //     // $_SESSION['mm'] = json_encode(Array("aid"=>$anvandarid, "hash"=>$hash));
-    //     //echo json_last_error();
-    // } else {
-    //     echo $sql . mysqli_error($conn);
-    // }
+  
 }
 
 if(isset($_GET['anv']) && isset($_GET['hash'])) {
