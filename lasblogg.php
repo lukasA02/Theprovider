@@ -13,16 +13,15 @@
                 $bloggid = $_GET['bloggid'];
                 $last = $_GET['last'];
 
-                $sql = "UPDATE blogg SET last = $last WHERE BloggID = $bloggid";
+                $sql = "UPDATE blogg SET last = ? WHERE BloggID = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ii", $last, $bloggid);
+                $stmt->execute();
 
                 $blogg = array();
-                if (mysqli_query($conn, $sql)) {
                     array_push($blogg, array(
                         "Result"=>true
                     ));
-                } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                }
                 echo json_encode($blogg);
                 mysqli_close($conn);
             }
