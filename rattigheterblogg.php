@@ -15,16 +15,15 @@ if(isset($_GET['hash'], $_GET['aid'])) {
             $rattigheter = $_GET['rattigheter'];
             if($rattigheter <= 2 && $rattigheter >= 0) {
                 
-                $sql = "UPDATE blogg SET Rattigheter = $rattigheter WHERE bloggid = $bloggid";
+                $sql = "UPDATE blogg SET Rattigheter = ? WHERE bloggid = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ii", $rattigheter, $bloggid);
+                $stmt->execute();
                 
                 $vs = array();
-                if (mysqli_query($conn, $sql)) {
                     array_push($vs, array(
                         "Result"=>true,
                     ));
-                } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                }
                 echo json_encode($vs);
                 mysqli_close($conn);
             }

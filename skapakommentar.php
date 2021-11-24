@@ -22,17 +22,17 @@ if(isset($_GET['inlaggid'], $_GET['rubrik'], $_GET['innehall'])) {
         $taggid = 'NULL';
 
     $sql = "INSERT INTO meddelande (InlaggID, Rubrik, Innehall, TaggID, Anvandare)
-    VALUES ($inlaggid, '$rubrik', '$innehall', $taggid, $aid)";
+    VALUES (?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("issii", $inlaggid, $rubrik, $innehall, $taggid, $aid);
+    $stmt->execute();
 
     $inlagg = array();
-    if (mysqli_query($conn, $sql)) {
         array_push($inlagg, array(
             "Result"=>true,
             "MeddelandeID"=>mysqli_insert_id($conn)
           ));
-    } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
     echo json_encode($inlagg);
     mysqli_close($conn);
 }

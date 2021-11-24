@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Värd: 127.0.0.1
--- Tid vid skapande: 19 nov 2021 kl 09:22
--- Serverversion: 10.4.20-MariaDB
--- PHP-version: 8.0.9
+-- Host: localhost
+-- Generation Time: Nov 24, 2021 at 02:13 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databas: `tp`
+-- Database: `tp`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `anvandare`
+-- Table structure for table `anvandare`
 --
 
 CREATE TABLE `anvandare` (
@@ -36,13 +36,13 @@ CREATE TABLE `anvandare` (
   `Fnamn` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
   `Epost` varchar(40) COLLATE utf8_swedish_ci NOT NULL,
   `Telefon` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
-  `Inloggtid` datetime NOT NULL,
-  `Hashkey` int(11) NOT NULL,
+  `Inloggtid` datetime NOT NULL DEFAULT current_timestamp(),
+  `Hashkey` int(11) DEFAULT NULL,
   `locked` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
--- Dumpning av Data i tabell `anvandare`
+-- Dumping data for table `anvandare`
 --
 
 INSERT INTO `anvandare` (`AnvandarID`, `Behorighet`, `Anvnamn`, `Losen`, `Enamn`, `Fnamn`, `Epost`, `Telefon`, `Inloggtid`, `Hashkey`, `locked`) VALUES
@@ -56,7 +56,7 @@ INSERT INTO `anvandare` (`AnvandarID`, `Behorighet`, `Anvnamn`, `Losen`, `Enamn`
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `blogg`
+-- Table structure for table `blogg`
 --
 
 CREATE TABLE `blogg` (
@@ -66,11 +66,11 @@ CREATE TABLE `blogg` (
   `Last` tinyint(1) NOT NULL,
   `Beskrivning` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
   `Titel` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
-  `Rattigheter` tinyint(1) NOT NULL
+  `Rattigheter` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
--- Dumpning av Data i tabell `blogg`
+-- Dumping data for table `blogg`
 --
 
 INSERT INTO `blogg` (`BloggID`, `AnvandarID`, `TaggID`, `Last`, `Beskrivning`, `Titel`, `Rattigheter`) VALUES
@@ -80,7 +80,7 @@ INSERT INTO `blogg` (`BloggID`, `AnvandarID`, `TaggID`, `Last`, `Beskrivning`, `
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -93,7 +93,7 @@ CREATE TABLE `event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
--- Dumpning av Data i tabell `event`
+-- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`EventID`, `Namn`, `beskrivning`, `Agare`, `Starttid`, `Sluttid`) VALUES
@@ -104,7 +104,7 @@ INSERT INTO `event` (`EventID`, `Namn`, `beskrivning`, `Agare`, `Starttid`, `Slu
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `foretag`
+-- Table structure for table `foretag`
 --
 
 CREATE TABLE `foretag` (
@@ -115,7 +115,7 @@ CREATE TABLE `foretag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `foretag`
+-- Dumping data for table `foretag`
 --
 
 INSERT INTO `foretag` (`id`, `fil`, `bak`, `css`) VALUES
@@ -126,7 +126,7 @@ INSERT INTO `foretag` (`id`, `fil`, `bak`, `css`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `meddelande`
+-- Table structure for table `meddelande`
 --
 
 CREATE TABLE `meddelande` (
@@ -141,7 +141,7 @@ CREATE TABLE `meddelande` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
--- Dumpning av Data i tabell `meddelande`
+-- Dumping data for table `meddelande`
 --
 
 INSERT INTO `meddelande` (`MeddelandeID`, `BloggID`, `InlaggID`, `TaggID`, `Anvandare`, `Tidsstampel`, `Rubrik`, `Innehall`) VALUES
@@ -152,7 +152,7 @@ INSERT INTO `meddelande` (`MeddelandeID`, `BloggID`, `InlaggID`, `TaggID`, `Anva
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `rattigheter`
+-- Table structure for table `rattigheter`
 --
 
 CREATE TABLE `rattigheter` (
@@ -162,7 +162,7 @@ CREATE TABLE `rattigheter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumpning av Data i tabell `rattigheter`
+-- Dumping data for table `rattigheter`
 --
 
 INSERT INTO `rattigheter` (`rattigheterID`, `EventID`, `AnvandarID`) VALUES
@@ -171,7 +171,7 @@ INSERT INTO `rattigheter` (`rattigheterID`, `EventID`, `AnvandarID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `tagg`
+-- Table structure for table `tagg`
 --
 
 CREATE TABLE `tagg` (
@@ -180,24 +180,24 @@ CREATE TABLE `tagg` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
--- Dumpning av Data i tabell `tagg`
+-- Dumping data for table `tagg`
 --
 
 INSERT INTO `tagg` (`TaggID`, `Namn`) VALUES
 (1, 'twitter');
 
 --
--- Index för dumpade tabeller
+-- Indexes for dumped tables
 --
 
 --
--- Index för tabell `anvandare`
+-- Indexes for table `anvandare`
 --
 ALTER TABLE `anvandare`
   ADD PRIMARY KEY (`AnvandarID`);
 
 --
--- Index för tabell `blogg`
+-- Indexes for table `blogg`
 --
 ALTER TABLE `blogg`
   ADD PRIMARY KEY (`BloggID`),
@@ -205,20 +205,20 @@ ALTER TABLE `blogg`
   ADD KEY `zoo` (`TaggID`);
 
 --
--- Index för tabell `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`EventID`),
   ADD KEY `foreign key anvandare` (`Agare`);
 
 --
--- Index för tabell `foretag`
+-- Indexes for table `foretag`
 --
 ALTER TABLE `foretag`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index för tabell `meddelande`
+-- Indexes for table `meddelande`
 --
 ALTER TABLE `meddelande`
   ADD PRIMARY KEY (`MeddelandeID`),
@@ -228,7 +228,7 @@ ALTER TABLE `meddelande`
   ADD KEY `anvandare` (`Anvandare`);
 
 --
--- Index för tabell `rattigheter`
+-- Indexes for table `rattigheter`
 --
 ALTER TABLE `rattigheter`
   ADD PRIMARY KEY (`rattigheterID`),
@@ -236,76 +236,76 @@ ALTER TABLE `rattigheter`
   ADD KEY `EID` (`EventID`);
 
 --
--- Index för tabell `tagg`
+-- Indexes for table `tagg`
 --
 ALTER TABLE `tagg`
   ADD PRIMARY KEY (`TaggID`);
 
 --
--- AUTO_INCREMENT för dumpade tabeller
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT för tabell `anvandare`
+-- AUTO_INCREMENT for table `anvandare`
 --
 ALTER TABLE `anvandare`
   MODIFY `AnvandarID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT för tabell `blogg`
+-- AUTO_INCREMENT for table `blogg`
 --
 ALTER TABLE `blogg`
   MODIFY `BloggID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT för tabell `event`
+-- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
   MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT för tabell `foretag`
+-- AUTO_INCREMENT for table `foretag`
 --
 ALTER TABLE `foretag`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT för tabell `meddelande`
+-- AUTO_INCREMENT for table `meddelande`
 --
 ALTER TABLE `meddelande`
   MODIFY `MeddelandeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT för tabell `rattigheter`
+-- AUTO_INCREMENT for table `rattigheter`
 --
 ALTER TABLE `rattigheter`
   MODIFY `rattigheterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT för tabell `tagg`
+-- AUTO_INCREMENT for table `tagg`
 --
 ALTER TABLE `tagg`
   MODIFY `TaggID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restriktioner för dumpade tabeller
+-- Constraints for dumped tables
 --
 
 --
--- Restriktioner för tabell `blogg`
+-- Constraints for table `blogg`
 --
 ALTER TABLE `blogg`
   ADD CONSTRAINT `banan` FOREIGN KEY (`AnvandarID`) REFERENCES `anvandare` (`AnvandarID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `zoo` FOREIGN KEY (`TaggID`) REFERENCES `tagg` (`TaggID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Restriktioner för tabell `event`
+-- Constraints for table `event`
 --
 ALTER TABLE `event`
   ADD CONSTRAINT `foreign key anvandare` FOREIGN KEY (`Agare`) REFERENCES `anvandare` (`AnvandarID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Restriktioner för tabell `meddelande`
+-- Constraints for table `meddelande`
 --
 ALTER TABLE `meddelande`
   ADD CONSTRAINT `anvandare` FOREIGN KEY (`Anvandare`) REFERENCES `anvandare` (`AnvandarID`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -314,7 +314,7 @@ ALTER TABLE `meddelande`
   ADD CONSTRAINT `krt` FOREIGN KEY (`InlaggID`) REFERENCES `meddelande` (`MeddelandeID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Restriktioner för tabell `rattigheter`
+-- Constraints for table `rattigheter`
 --
 ALTER TABLE `rattigheter`
   ADD CONSTRAINT `AID` FOREIGN KEY (`AnvandarID`) REFERENCES `anvandare` (`AnvandarID`) ON DELETE CASCADE ON UPDATE CASCADE,
