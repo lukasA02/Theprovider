@@ -6,7 +6,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
 
     if(verifiera($_GET['hash'],$_GET['aid'])){
 
-if (isset($_GET['submit'])){
+if (isset($_GET['date'])){
     $date = $_GET['date'];
 
     $sql = "SELECT * FROM event WHERE Starttid BETWEEN '$date 00:00:00' AND '$date 23:59:00'";
