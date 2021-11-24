@@ -8,17 +8,12 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
 
   if(verifiera($_GET['hash'],$_GET['aid'])){
 
-    if (isset ($_GET ["anvandarid"])){
+    if (isset ($_GET["anvandarid"], $_GET["Anvnamn"], $_GET["Enamn"], $_GET["Fnamn"], $_GET["Epost"], $_GET["Telefon"])){
       $anvandarid = $_GET['anvandarid'];
-      if (isset ($_GET ["Anvnamn"]))
       $Anvnamn = $_GET['Anvnamn'];
-      if (isset ($_GET ["Enamn"]))
       $Enamn = $_GET['Enamn'];
-      if (isset ($_GET ["Fnamn"]))
       $Fnamn = $_GET['Fnamn'];
-      if (isset ($_GET ["Epost"]))
       $Epost = $_GET['Epost'];
-      if (isset ($_GET ["Telefon"]))
       $Telefon = $_GET['Telefon'];
      
     
