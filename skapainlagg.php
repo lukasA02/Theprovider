@@ -20,17 +20,16 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
                 $taggid = 'NULL';
 
             $sql = "INSERT INTO meddelande (BloggID, Rubrik, Innehall, TaggID, Anvandare)
-            VALUES ($bloggid, '$rubrik', '$innehall', $taggid, $aid)";
+            VALUES (?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("issii", $bloggid, $rubrik, $innehall, $taggid, $aid);
+            $stmt->execute();
 
             $inlagg = array();
-            if (mysqli_query($conn, $sql)) {
                 array_push($inlagg, array(
                     "Result"=>true,
                     "MeddelandeID"=>mysqli_insert_id($conn)
                 ));
-            } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
             echo json_encode($inlagg);
             mysqli_close($conn);
         }

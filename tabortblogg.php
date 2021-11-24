@@ -17,63 +17,44 @@
 
                 if(isset($_GET['tabort'])){
 
-                    $sql = "DELETE FROM blogg WHERE BloggID = $bloggid";
+                    $sql = "DELETE FROM blogg WHERE BloggID = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("i", $bloggid);
+                    $stmt->execute();
 
                     $blogg = array();
-                    if (mysqli_query($conn, $sql)) {
                         array_push($blogg, array(
                             "Result"=>true,
                         ));
-                    } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                    }
                     echo json_encode($blogg);
 
                 }
 
                 if(isset($_GET['last'])){
-
-                  
-
-                    $sql2 = "UPDATE blogg SET Last='1' WHERE BloggID =  $bloggid ";
+                    $sql2 = "UPDATE blogg SET Last='1' WHERE BloggID = ?";
+                    $stmt = $conn->prepare($sql2);
+                    $stmt->bind_param("i", $bloggid);
+                    $stmt->execute();
 
                     $blogg1 = array();
-                    if (mysqli_query($conn, $sql2)) {
                         array_push($blogg1, array(  
                             "Result"=>true,
                         ));
-                    } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                    }
                     echo json_encode($blogg1);
-                
-             
                 }
 
                 if(isset($_GET['lastupp'])){
-
-                  
-
-                    $sql3 = "UPDATE blogg SET Last='0' WHERE BloggID =  $bloggid ";
+                    $sql3 = "UPDATE blogg SET Last='0' WHERE BloggID = ?";
+                    $stmt = $conn->prepare($sql3);
+                    $stmt->bind_param("i", $bloggid);
+                    $stmt->execute();
 
                     $blogg2 = array();
-                    if (mysqli_query($conn, $sql3)) {
                         array_push($blogg2, array(  
                             "Result"=>true,
                         ));
-                    } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                    }
                     echo json_encode($blogg2);
-                
-             
-
                 }
-
-
-                
-
-                
                 mysqli_close($conn);
 
                
