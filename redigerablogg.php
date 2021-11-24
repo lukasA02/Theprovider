@@ -11,22 +11,21 @@
         $bloggid = $_GET['bloggid'];
         $beskrivning = $_GET['beskrivning'];
         $titel = $_GET['titel'];
+        $taggid = 'NULL';
 
         if(isset($_GET['taggid']))
             $taggid = $_GET['taggid'];
-        else
-            $taggid = 'NULL';
 
-        $sql = "UPDATE blogg SET TaggID = $taggid, Last = $last, Beskrivning = '$beskrivning', Titel = '$titel' WHERE BloggID = $bloggid";
+        $sql = "UPDATE blogg SET TaggID = ?, Last = ?, Beskrivning = ?, Titel = ? WHERE BloggID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iissi", $taggid, $last, $beskrivning, $titel, $bloggid);
+        $stmt->execute();
+        $stmt->store_result();
 
         $blogg = array();
-        if (mysqli_query($conn, $sql)) {
             array_push($blogg, array(
                 "Result"=>true
               ));
-        } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
         echo json_encode($blogg);
         mysqli_close($conn);
     }
