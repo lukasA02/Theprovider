@@ -7,11 +7,11 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
 
     if(verifiera($_GET['hash'],$_GET['aid'])){
 
-if(isset ($_GET['submit']))
-{
-    if(isset($_GET['namn']) && isset($_GET['starttid']) && isset($_GET['sluttid']))
+
+    if(isset($_GET['namn']) && isset($_GET['Agare']) && isset($_GET['starttid']) && isset($_GET['sluttid']) &&isset($_GET["beskrivning"])){
     $namn = $_GET['namn'];
     $agare = $_GET['Agare'];
+    $beskrivning = $_GET["beskrivning"];
     $start = $_GET['starttid'];
     $slut = $_GET['sluttid'];
 
@@ -21,8 +21,8 @@ if(isset ($_GET['submit']))
     if (mysqli_num_rows($result) > 0) {
         echo "Redan bokat";
     } else {
-        $sql="INSERT INTO event (namn, agare, starttid, sluttid)
-        VALUES ('$namn', '$agare', '$start', '$slut')";
+        $sql="INSERT INTO event (namn, agare, starttid, sluttid, beskrivning)
+        VALUES ('$namn', '$agare', '$start', '$slut', '$beskrivning')";
 
         if (mysqli_query($conn, $sql)) {
             echo "Nytt event lagrat";
@@ -32,38 +32,24 @@ if(isset ($_GET['submit']))
 
         }
 
-        mysqli_close($conn);
     }
-die;
-    header( "Refresh:1; index.php");
-}
-    // $stmt = $conn->prepare($sql);
-    // $stmt->bind_param("sss", $start, $slut, $agare);
 
-    // if ($stmt->execute()) {
-    //     $result = $stmt->get_result();
-    //     $num_rows = $result->num_rows;
-    // }
+    mysqli_close($conn);
 
-    // if ($num_rows > 0) {
-    //     echo "Redan bokat";
-    // } else {
-    //     $sql="INSERT INTO event (namn, agare, starttid, sluttid)
-    //     VALUES ('$namn', '$agare', '$start', '$slut')";
-
-    //     if (mysqli_query($conn, $sql)) {
-    //         echo "Nytt event lagrat";
-    //     } else {
-    //         echo "Error: " .$sql . "
-    //         " . mysqli_error($conn);
-    //     }
-
-    //     mysqli_close($conn);
-    // }
     }else{
+
+        echo "fel input: " .$sql . "
+            " . mysqli_error($conn);
+
+
+    }
+
+        
+    
+}else{
         echo "Går inte att logga in";
     }
-} else{
+}else{
     echo "Logga in";
 }
 
