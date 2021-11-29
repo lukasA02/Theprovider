@@ -17,15 +17,18 @@ if(isset($_GET['aid'], $_GET['hash'])) {
                 
                 mysqli_close($conn);
             } else{
-                echo "Inget anvid";
+                $Error = "Inget anvid";
+                echo json_encode($Error);
             }
 
         } else {
-            echo "Du är inte admin";
+            $Error = "Du är inte admin";
+            echo json_encode($Error);
         }
 
     } else {
-        echo "Ej inloggad";
+        $Error = "logga in";
+        echo json_encode($Error);
     }
 }
 ?>

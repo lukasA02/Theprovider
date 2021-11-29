@@ -28,7 +28,8 @@ if(mysqli_num_rows($result) == 1) {
       }
     }
     else
-        echo "0 resultat";
+    $Error = "0 resultat";
+        echo json_encode($Error);
     return true;
 }
     else {

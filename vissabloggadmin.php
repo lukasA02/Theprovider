@@ -25,10 +25,12 @@ if(isset($_GET['aid'], $_GET['hash'])){
     }
 
 }else{
-  echo "Fel hashnyckel/aid";
+  $Error = "Fel hashnyckel/aid";
+  echo json_encode($Error);
 }
 
 }else{
-  echo "Välj aid, hash och BloggID";
+  $Error ="Välj aid, hash och BloggID";
+  echo json_encode($Error);
 }
 ?>

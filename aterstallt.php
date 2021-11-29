@@ -1,7 +1,7 @@
 <?php
 
-require_once '../conn.php';
-require_once '../verifiera.php';
+require_once 'conn.php';
+require_once 'verifiera.php';
 
 if(isset($_GET['aid']) && isset($_GET['hash'])){
 
@@ -18,7 +18,8 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
 if(isset($_GET['LosenTxt'])) {
 
     $NyttLosen = $_GET['LosenTxt'];
-    echo "nytt lösenord: " . $NyttLosen;
+    $nylos = "nytt lösenord: " . $NyttLosen;
+    echo json_encode($nylos);
     
 
 } else header('Location: aterstall.php');
@@ -36,15 +37,18 @@ if(!$uppercase || !$lowercase || strlen($NyttLosen) < 8) {
   echo 'Strong password.';
   if (mysqli_query($conn, $sql)) {
   } else {
-    echo "Fel: " . $sql . "<br>" . mysqli_error($conn);
+    $Error = "Fel: " . $sql . "<br>" . mysqli_error($conn);
+    echo json_encode($Error)
   }
 }
 
 }else{
-  echo " skriv in rätt aid/hash";
+  $Error = "misslyckad verifiering"
+  echo json_encode($Error);
 }
 }else{
-echo " logga in";
+  $Error = "Logga in";
+  echo json_encode($Error);
 }
 
 

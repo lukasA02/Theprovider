@@ -20,11 +20,15 @@ if(isset($_GET['hash'], $_GET['aid'])) {
             mysqli_close($conn);
         }
         else
-            echo "Välj meddelandeid";
+        $välj = "Välj meddelandeid";
+            echo json_encode($välj);
     }
-    else
-        echo "Kunde inte logga in";
+    else{
+        $Error ="Kunde inte logga in";
+        echo json_encode($Error);
 }
-else
-    echo "Logga in";
+else{
+    $Error = "Logga in";
+    echo json_encode($Error);
+}
 ?>

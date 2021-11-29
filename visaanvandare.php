@@ -14,10 +14,11 @@ if(isset($_GET['aid'], $_GET['hash'])) {
             echo json_encode($anv);
 
             } else {
-                echo "Du är inte admin";
+                $admin = "Du är inte admin";
+                echo json_encode($admin);
             }
     } else {
-        echo "no";
+        echo json_encode("Error fel inlogg");
     }
 }
 

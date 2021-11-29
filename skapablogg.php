@@ -2,8 +2,6 @@
     require_once "conn.php";
     require_once 'verifiera.php';
 
-    // $_GET['anv'] =1;
-    // $_GET['hash'] = 123456;
 
 
     if(isset($_GET['aid']) && isset($_GET['hash'])){
@@ -38,14 +36,17 @@
         mysqli_close($conn);
     }
     else{
-        echo "Fyll i alla fält";
+        $fyll = "Fyll i alla fält";
+        echo json_encode($fyll);
     }
 
     }else{
-        echo "Kan inte logga in";
+        $Error = "misslyckad verifiering"
+        echo json_encode($Error);
     }
 
 }   else{
-    echo "Logga in";
+    $Error = "Logga in";
+    echo json_encode($Error);
 }
 ?>

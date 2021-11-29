@@ -30,13 +30,17 @@
         mysqli_close($conn);
     }
     else{
-        echo "Fyll i alla fält";}
+        $Fyll = "Fyll i alla fält";
+        echo json_encode($Fyll);
+    }
 
     }else{
-        echo "Kan inte logga in";
+        $Error = "misslyckad verifiering"
+        echo json_encode($Error);
     }
 
 } else{
-    echo "Logga in";
+    $Error = "Logga in";
+    echo json_encode($Error);
 }
 ?>

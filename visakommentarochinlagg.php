@@ -84,7 +84,8 @@ $result = mysqli_query($conn, $sql);
   echo json_encode($kommentarer);
   }
   else {
-  echo "0 resultat";
+    $resltat = "0 resltat"
+    echo json_encode($resltat);
   }
 }
 else {
@@ -105,7 +106,8 @@ $result = mysqli_query($conn, $sql);
     echo json_encode($kommentarer);
   }
   else {
-  echo "0 resultat";
+    $resltat = "0 resltat"
+    echo json_encode($resltat);
 }
 }
 mysqli_close($conn);

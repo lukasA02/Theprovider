@@ -1,33 +1,8 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-</head>
-<body>
-<iframe src="frontend/ram.php" style="
-            position: fixed;
-            top: 0px;
-            bottom: 0px;
-            right: 0px;
-            width: 230px;
-            border: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            z-index: 999999;
-            height: 100px;
-        "></iframe>
-</body>
-</html>
+
 <?php
 require_once 'conn.php';
 require_once 'verifiera.php';
 
-// $_GET['anv'] = 1;
-// $_GET['hash'] = 123456789;
 
 if(isset($_GET['aid']) && isset($_GET['hash'])){
 
@@ -43,16 +18,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
 
   if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
-          // echo "ID: " . $row["EventID"] . " Namn: " . $row["Namn"] . " Ägare: " . $row["Agare"] .
-          // " Starttid: ". $row["Starttid"] . " Sluttid: " . $row["Sluttid"];
-         /* $events[] = array(
-              "ID"=>$row["EventID"],
-              "Namn"=>$row["Namn"],
-              "Agare"=>$row["Agare"],
-              "Starttid"=>$row["Starttid"],
-              "Sluttid"=>$row["Sluttid"]
-          );
-          */
+    
       array_push($events, array(
         "ID"=>$row["EventID"],
         "Namn"=>$row["Namn"],
@@ -63,7 +29,8 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
       ));
     }
   } else {
-    echo "0 results";
+    $res = "0 results";
+    echo json_encode($ras);
   }
   $result2 = mysqli_query($conn,$sql2);
 
@@ -85,13 +52,16 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
 
     }
     else
-      echo "Du är inte admin";
+    $Error = "Du är inte admin";
+      echo json_encode($Error);
   }else{
-    echo "Går inte att logga in";
+    $Error = "misslyckad verifiering"
+    echo json_encode($Error);
   }
 
 }else{
-  echo "Logga in";
+  $output = "fel"; 
+  echo json_encode($output);
 }
 
 

@@ -21,7 +21,8 @@ if(isset($_GET["eventid"], $_GET["hash"], $_GET["aid"], $_GET["anvandarid"])) {
       if (mysqli_query($conn, $sql)) {
         // echo "New record created successfully";
       } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        $Error = "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo json_encode($Error);
       }
 
       $sql = "SELECT * FROM rattigheter";
@@ -33,14 +34,17 @@ if(isset($_GET["eventid"], $_GET["hash"], $_GET["aid"], $_GET["anvandarid"])) {
         echo json_encode($ratt);
       }
     } else {
-      echo "0 results";
+      echo json_encode("0 results");
     }
   } else {
-    echo "Du har inte tillgång till EventID: " . $EN;
+    $Error ="Du har inte tillgång till EventID: " . $EN;
+    echo json_encode($Error);
   }
  mysqli_close($conn);
 }
 }
-else
-  echo "Fel: logga in, välj eventid och anvandarid";
+else {
+$Error ="Fel: logga in, välj eventid och anvandarid";
+  echo json_encode($Error);
+}
 ?>

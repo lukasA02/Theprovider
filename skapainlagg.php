@@ -2,8 +2,6 @@
 require_once "conn.php";
 require_once 'verifiera.php';
 
-// $_GET['anv'] =1;
-// $_GET['hash'] = 123456;
 
 if(isset($_GET['aid']) && isset($_GET['hash'])){
 
@@ -34,14 +32,17 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
             mysqli_close($conn);
         }
         else {
-            echo "Välj bloggid, rubrik och innehåll";
+            $välj = "Välj bloggid, rubrik och innehåll";
+            echo json_encode($välj);
         }
 
     } else {
-        echo "Omöjligt att logga in";
+        $Error = " misslyckad verifiering"
+        echo json_encode($Error);
     }
 
 }else{
-    echo "Logga in";
+    $Error = "Logga in";
+    echo json_encode($Error);
 }
 ?>

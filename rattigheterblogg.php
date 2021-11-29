@@ -26,19 +26,23 @@ if(isset($_GET['hash'], $_GET['aid'])) {
                     ));
                 echo json_encode($vs);
                 mysqli_close($conn);
-            }
-            else
-                echo "0 = privat<br>
+            }else{
+                $vissa = "0 = privat<br>
                 1 = öppen för företaget<br>
                 2 = öppen för alla
                 ";
+                echo json_encode($vissa);
+            }
+        }else{
+            $välj = "Välj bloggid och rattigheter";
+            echo json_encode($välj);
         }
-        else
-            echo "Välj bloggid och rattigheter";
+    }else{
+    $Error = "misslyckad verifiering"
+    echo json_encode($Error);
     }
-    else
-        echo "Kunde inte logga in";
+}else{
+$Error = "Logga in";
+echo json_encode($Error);
 }
-else
-    echo "Logga in";
 ?>

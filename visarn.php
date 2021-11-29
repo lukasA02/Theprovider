@@ -1,7 +1,7 @@
 
 <?php
-include_once '../conn.php';
-include_once '../verifiera.php';
+include_once 'conn.php';
+include_once 'verifiera.php';
 
 
 if(isset($_GET['hash'], $_GET['aid'])) {
@@ -22,16 +22,19 @@ if(isset($_GET['hash'], $_GET['aid'])) {
      echo json_encode($visa);
         }
     } else {
-        echo "0 results";
+        $resltat = "0 resltat"
+        echo json_encode($resltat);
     }
 
 }
 
 }else{
-    echo " skriv in rätt aid/hash";
+    $Error = " skriv in rätt aid/hash";
+    echo json_encode($Error);
   }
 }else{
-    echo " logga in";
+    $logga =" logga in";
+    echo json_encode($logga);
     }
 
 mysqli_close($conn);

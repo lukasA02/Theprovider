@@ -1,7 +1,7 @@
 
 <?php
-require_once '../conn.php';
-require_once '../verifiera.php';
+require_once 'conn.php';
+require_once 'verifiera.php';
 
 if(isset($_GET['hash'], $_GET['aid'])) {
   if(verifiera($_GET['hash'], $_GET['aid'])) {
@@ -12,7 +12,8 @@ if(isset($_GET['hash'], $_GET['aid'])) {
         if (mysqli_query($conn, $sql)) {
             echo " Event uppdaterat";
           } else {
-            echo " Fel: " . $sql . "<br>" . mysqli_error($conn);
+            $Error = " Fel: " . $sql . "<br>" . mysqli_error($conn);
+            echo json_encode($Error);
           }
         mysqli_close($conn);
         }
@@ -31,10 +32,17 @@ if(isset($_GET['hash'], $_GET['aid'])) {
     if (mysqli_query($conn, $sql)) {
         echo " Event uppdaterat";
       } else {
-        echo " Fel: " . $sql . "<br>" . mysqli_error($conn);
+        $Error =  " Fel: " . $sql . "<br>" . mysqli_error($conn);
+        echo json_encode($Error);
       }
     mysqli_close($conn);
     }
+  }else{
+    $Error = "misslyckad verifiering"
+    echo json_encode($Error);
   }
+}else{
+  $Error = "Logga in";
+echo json_encode($Error);
 }
 ?>

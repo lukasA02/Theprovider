@@ -23,18 +23,26 @@ if(isset($_GET['hash'], $_GET['aid'])) {
                     "Result"=>true
                 ));
             }
-            else
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            else{
+                $Error = "Error: " . $sql . "<br>" . mysqli_error($conn);
+                echo json_encode($Error);
+            }
 
             echo json_encode($vs);
             mysqli_close($conn);
         }
-        else
-            echo "Välj meddelandeid, innehall och/eller rubrik";
+        else{
+            $Error = "Välj meddelandeid, innehall och/eller rubrik";
+            echo json_encode($Error);
+        }
     }
-    else
-        echo "Kunde inte logga in";
+    else{
+        $Error = "misslyckad verifiering"
+        echo json_encode($Error);
+    }
 }
-else
-    echo "Logga in";
+else{
+    $Error = "Logga in";
+    echo json_encode($Error);
+}
 ?>

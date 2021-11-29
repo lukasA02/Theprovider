@@ -23,12 +23,15 @@ if (isset($_GET['date'])){
     }
 }
     }else{
-        echo "Det går inte att logga in";
+        lse{
+            $Error = "misslyckad verifiering"
+            echo json_encode($Error);
     }
 
 
 }else{
-    echo "Logga in";
+    $output = "fel"; 
+  echo json_encode($output);
 }
 
 ?>

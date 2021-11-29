@@ -6,7 +6,7 @@ if(isset($_GET['aid'], $_GET['hash'])){
  
   if(verifiera($_GET['hash'], $_GET['aid']) && $behorighet ==  3) {
 
-    $sql = "SELECT Titel, Beskrivning, AnvandarID FROM blogg WHERE Rattigheter = 1";
+    $sql = "SELECT Titel, Beskrivning, AnvandarID FROM blogg WHERE Rattigheter = 1 OR Rattigheter = 2";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -21,10 +21,12 @@ if(isset($_GET['aid'], $_GET['hash'])){
     echo json_encode($inlagg);
   
 }else{
-  echo "Fel hashnyckel/aid";
+  $Error = "Fel hashnyckel/aid";
+  echo json_encode($Error);
 }
 
 }else{
-  echo "Välj aid, hash och BloggID";
+  $Error ="Välj aid, hash och BloggID";
+  echo json_encode($Error);
 }
 ?>

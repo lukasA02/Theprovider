@@ -38,12 +38,6 @@ if(!$uppercase || !$lowercase || strlen($Losen) < 8) {
 $sql = "INSERT INTO anvandare(AnvandarID,Behorighet,Anvnamn,Losen,Enamn,Fnamn,Epost,Telefon)
 VALUES (null,'$Behorighet','$Anvnamn',MD5('$Losen'),'$Enamn','$Fnamn','$Epost','$Telefon')";
 
-/*if (mysqli_query($conn, $sql)) {
-  echo "Konto skapat";
-} else {
-  echo "Fel: " . $sql . "<br>" . mysqli_error($conn);
-}*/
-
 mysqli_close($conn);
 }
 else
@@ -54,10 +48,14 @@ echo "Fyll i alla fält";
 // $stmt->execute();
 // $stmt->close();
 }else{
-  echo "Går inte att logga in";
+  $Error = "misslyckad verifiering"
+  echo json_encode($Error);
+  
 }
 
 }else{
-  echo "Logga in";
+  $Error = "Logga in";
+  echo json_encode($Error);
+}
 }
 ?>
