@@ -26,7 +26,7 @@ if(isset($_GET['hash'], $_GET['aid'])) {
         $sltid = $_GET['sluttid'];
 
         if(isset($_GET['namn']) && isset($_GET['starttid']) && isset($_GET['sluttid'])){
-            $sql = "UPDATE event SET Namn = '$namn', beskrivning = '$beskrivning' Starttid ='$sttid', Sluttid='$sltid' WHERE EventID = $evid";
+            $sql = "UPDATE event SET Namn = '$namn', beskrivning = '$beskrivning', Starttid ='$sttid', Sluttid='$sltid' WHERE EventID = $evid";
         }
 
     if (mysqli_query($conn, $sql)) {
