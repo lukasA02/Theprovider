@@ -12,8 +12,8 @@ if(isset($_GET['aid'], $_GET['hash'])) {
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("i", $anvid);
                 $stmt->execute();
-                
-                echo "Anvandare borttagen";
+                $anv = "Anvandare borttagen";
+                echo json_encode($anv);
                 
                 mysqli_close($conn);
             } else{

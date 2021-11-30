@@ -37,7 +37,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
         }
 
     } else {
-        $Error = " misslyckad verifiering"
+        $Error = " misslyckad verifiering";
         echo json_encode($Error);
     }
 

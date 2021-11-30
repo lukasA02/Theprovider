@@ -22,7 +22,7 @@ if(isset($_GET['hash'], $_GET['aid'])) {
      echo json_encode($visa);
         }
     } else {
-        $resltat = "0 resltat"
+        $resltat = "0 resltat";
         echo json_encode($resltat);
     }
 

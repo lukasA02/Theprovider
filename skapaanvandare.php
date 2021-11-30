@@ -48,7 +48,7 @@ echo json_encode($Error);
 
 }
 }else{
-  $Error = "misslyckad verifiering"
+  $Error = "misslyckad verifiering";
   echo json_encode($Error);
   
 }

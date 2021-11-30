@@ -38,7 +38,7 @@ if(isset($_GET['hash'], $_GET['aid'])) {
             echo json_encode($välj);
         }
     }else{
-    $Error = "misslyckad verifiering"
+    $Error = "misslyckad verifiering";
     echo json_encode($Error);
     }
 }else{

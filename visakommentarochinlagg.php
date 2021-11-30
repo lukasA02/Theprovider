@@ -14,7 +14,8 @@ if(isset($_GET['anvandarid'])) {
       }
     }
     else
-      echo "0 resultat";
+    $resltat = "0 resltat";
+    echo json_encode($resltat);
   if(isset($bloggid)) {
     // echo "AAAAAAAAAAAAA";
 
@@ -38,7 +39,8 @@ if(isset($_GET['anvandarid'])) {
 // echo json_last_error_msg();
 }
 else
-  echo "0 resultat";
+$resltat = "0 resltat";
+echo json_encode($resltat);
 }
 // Alla inlägg
 else {
@@ -60,7 +62,8 @@ if(mysqli_num_rows($result) > 0) {
   // echo json_last_error_msg();
 }
 else {
-  echo "0 resultat";
+  $resltat = "0 resltat";
+  echo json_encode($resltat);
 }
 }
 
@@ -84,7 +87,7 @@ $result = mysqli_query($conn, $sql);
   echo json_encode($kommentarer);
   }
   else {
-    $resltat = "0 resltat"
+    $resltat = "0 resltat";
     echo json_encode($resltat);
   }
 }
@@ -106,7 +109,7 @@ $result = mysqli_query($conn, $sql);
     echo json_encode($kommentarer);
   }
   else {
-    $resltat = "0 resltat"
+    $resltat = "0 resltat";
     echo json_encode($resltat);
 }
 }

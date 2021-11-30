@@ -27,6 +27,7 @@ if(isset($_GET['hash'], $_GET['aid'])) {
         $Error ="Kunde inte logga in";
         echo json_encode($Error);
 }
+}
 else{
     $Error = "Logga in";
     echo json_encode($Error);

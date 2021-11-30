@@ -38,7 +38,7 @@ if(isset($_GET['hash'], $_GET['aid'])) {
     mysqli_close($conn);
     }
   }else{
-    $Error = "misslyckad verifiering"
+    $Error = "misslyckad verifiering";
     echo json_encode($Error);
   }
 }else{

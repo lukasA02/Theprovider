@@ -32,9 +32,11 @@ $sql = "UPDATE anvandare SET Losen = MD5('$NyttLosen') WHERE  anvandarid = 1";
 
 
 if(!$uppercase || !$lowercase || strlen($NyttLosen) < 8) {
-  echo 'Password should be at least 8 tecken in length and should include at least one upper case letter, one number character.';
+  $pw = 'Password should be at least 8 tecken in length and should include at least one upper case letter, one number character.';
+  echo json_encode($pw);
 }else{
-  echo 'Strong password.';
+  $pw = 'Strong password.';
+  echo json_encode($pw);
   if (mysqli_query($conn, $sql)) {
   } else {
     $Error = "Fel: " . $sql . "<br>" . mysqli_error($conn);

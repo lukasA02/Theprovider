@@ -19,7 +19,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        $redan = "Redan bokat"
+        $redan = "Redan bokat";
         echo json_encode($redan);
     } else {
         $sql="INSERT INTO event (namn, agare, starttid, sluttid, beskrivning)
@@ -48,7 +48,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
         
     
 }else{
-    $Error = "misslyckad verifiering"
+    $Error = "misslyckad verifiering";
     echo json_encode($Error);
     }
 }else{
