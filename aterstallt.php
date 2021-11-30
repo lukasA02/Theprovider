@@ -10,9 +10,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
 if(isset($_GET['anv']) && isset($_GET['losen'])) {
     $username = $_GET['anv'];
     $password = $_GET['losen'];
-    echo $password."<br>";
     $password = MD5($password);
-    echo $password;
 }
 
 if(isset($_GET['LosenTxt'])) {
@@ -22,7 +20,7 @@ if(isset($_GET['LosenTxt'])) {
     echo json_encode($nylos);
     
 
-} else header('Location: aterstall.php');
+}
 
 $uppercase = preg_match('@[A-Z]@', $NyttLosen);
 $lowercase = preg_match('@[a-z]@', $NyttLosen);
