@@ -1,0 +1,301 @@
+﻿Dessa saker skall skickas med, dvs, skrivas in i adressfältet.
+
+
+Skapa Blogg
+
+
+skapablogg.php
+
+
+?aid=
+&hash=
+&anvandarid=
+&last= (0=nej 1=ja)
+&beskrivning=
+&titel=
+&submit=Skicka
+
+
+
+
+Skapa inlagg
+
+
+skapainlagg.php
+
+
+?aid=
+&hash=
+&bloggid=
+&rubrik=
+&innehall=
+
+
+
+
+Skapa Kommentar
+
+
+skapakommentar.php
+
+
+?aid=
+&hash=
+&inlaggid=
+&rubrik=
+&innehall=
+(optional) &taggid=
+
+
+
+
+Skapa Användare
+
+
+skapaanvandare.php
+
+
+?aid=
+&hash=
+&Behorighet= (1=Admin, 2=Åskådare, 3=Användare)
+&Losen= (8 tecken och minst ett uppercase)
+&Enamn=
+&Fnamn=
+&Epost=
+&Telefon=
+
+
+(endast admin kan skapa flera användare)
+
+
+
+
+Skapa Event
+
+
+process.php
+
+
+?aid=
+&hash=
+&namn=
+&Agare= (personens anvid)
+&starttid= (åååå-mm-dd tt-mm-ss)
+&sluttid= (åååå-mm-dd tt-mm-ss)
+&beskrivning=
+
+
+
+
+Skapa rättigheter (Blogg)
+
+
+rattigheterblogg.php
+
+
+?aid=
+&hash=
+&bloggid=
+&rattigheter= (0=privat, 1=företaget, 2=alla)
+
+
+
+
+Redigera Användare
+
+
+redigeraanvandare.php
+
+
+?aid=
+&hash=
+&anvandarid=
+&Anvnamn=
+&Enamn=
+&Fnamn=
+&Epost=
+&Telefon=
+
+
+(Obs. inget av fälten får vara tomma)
+
+
+
+
+Redigera Blogg
+
+
+redigerablogg.php
+
+
+?aid=
+&hash=
+&titel=
+&bloggid=
+&last= (0=nej 1=ja)
+&beskrivning=
+Redigera Inlägg
+
+
+redigerainlagg.php
+
+
+?aid=
+&hash=
+&medelandeid=
+&innehall=
+&rubrik=
+
+
+
+
+Ta bort blogg
+
+
+tabortblogg.php
+
+
+?aid=
+&hash=
+&bloggid=
+&tabort (or) &last (or) &lastupp
+
+
+
+
+Ta bort inlägg
+
+
+tabortinlagg.php
+
+
+?aid=
+&hash=
+&meddelandeid=
+
+
+(kan endast ta bort sina egna inlägg)
+
+
+
+
+Visa Användare
+
+
+visaanvandare.php
+
+
+?aid=
+&hash=
+
+
+(Visar endast alla användare om man har admin, dvs rättighet 1)
+
+
+
+
+Visa Blogg (allmänheten)
+
+
+visabloggalla.php
+
+
+(inget behöver skickas med, visar bloggar där åtskådare (2) har rätten att se dem)
+
+
+Visa Blogg (admin)
+
+
+vissabloggadmin.php
+
+
+?aid=
+&hash=
+
+
+(visar alla bloggar ifall man har rättighet 1 (admin))
+
+
+
+
+Visa Blogg (användare)
+
+
+vissablogganv.php
+
+
+?aid=
+&hash=
+
+
+(visar blogg för personer med behörighet 3 (användare))
+
+
+
+
+Visa kommentarer och inlägg
+
+
+visakommentarochinlagg.php
+
+
+?aid=
+&hash=
+(optional) &anvandarid=
+
+
+(visar blogginnehåll, endast frpn en specifik användare ifall man skickar med användar id)
+
+
+
+
+Visa kalender
+
+
+minkalender.php
+
+
+?aid=
+&hash=
+
+
+(Visar kalenderinformation för en admin, dvs ifall man har behörighet 1)
+
+
+
+
+Conn
+
+
+conn.php
+
+
+(ansluter till databasen)
+
+
+
+
+Behörighet
+
+
+behorighet.php
+
+
+(sköter hashnyckel och inlogg)
+
+
+
+
+Bjuda in
+
+
+bjudain.php
+
+
+?aid=
+&hash=
+&eventid=
+&anvandarid=
+
+
+(bjuder in användare till event)
