@@ -19,9 +19,11 @@ if(isset($_GET['hash'], $_GET['aid'])) {
             echo json_encode($vs);
             mysqli_close($conn);
         }
-        else
-        $välj = "Välj meddelandeid";
+        else{
+            $välj = "Välj meddelandeid";
             echo json_encode($välj);
+        }
+        
     }
     else{
         $Error ="Kunde inte logga in";
