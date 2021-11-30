@@ -45,7 +45,7 @@ if(!$uppercase || !$lowercase || strlen($NyttLosen) < 8) {
 }
 
 }else{
-  $Error = "misslyckad verifiering"
+  $Error = "misslyckad verifiering";
   echo json_encode($Error);
 }
 }else{
