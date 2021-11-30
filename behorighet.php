@@ -12,8 +12,8 @@ if(isset($_GET['anv']) && isset($_GET['losen'])) {
 $sql = "SELECT AnvandarID, Behorighet, Anvnamn, Losen FROM anvandare WHERE Anvnamn = '$username' && Losen = '$password' && locked IS NULL";
 $result = mysqli_query($conn, $sql);
 
-// $hash = mt_rand(100000000, 999999999);
-$hash = 123456789;
+$hash = mt_rand(100000000, 999999999);
+//$hash = 123456789;
 $tid = new DateTime('now');
 date_default_timezone_set("Europe/Stockholm");
 $tid = date('Y-m-d H:i:s');
@@ -34,6 +34,18 @@ if (mysqli_num_rows($result) > 0) {
         $result = mysqli_query($conn, $sql);
     }
 
+    $sql = "SELECT Hashkey, AnvandarID FROM anvandare WHERE
+    AnvandarID = $anvandarid";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            $anvandarid = $row["AnvandarID"];
+            $hash = $row["Hashkey"];
+            $arr = array('aid' => $anvandarid, 'hash' => $hash);
+            echo json_encode($arr);
+        }
+    }
   
 }
 
