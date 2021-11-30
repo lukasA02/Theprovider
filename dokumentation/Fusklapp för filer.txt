@@ -261,6 +261,12 @@ minkalender.php
 
 (Visar kalenderinformation för en admin, dvs ifall man har behörighet 1)
 
+inputdatum.php
+
+?aid=
+&hash=
+&date= (åååå-mm-dd)
+
 
 
 
