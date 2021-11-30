@@ -23,7 +23,6 @@ if (isset($_GET['date'])){
     }
 }
     }else{
-        lse{
             $Error = "misslyckad verifiering"
             echo json_encode($Error);
     }

@@ -51,9 +51,10 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
   mysqli_close($conn);
 
     }
-    else
+    else{
     $Error = "Du är inte admin";
       echo json_encode($Error);
+    }
   }else{
     $Error = "misslyckad verifiering"
     echo json_encode($Error);

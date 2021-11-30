@@ -27,9 +27,10 @@ if(mysqli_num_rows($result) == 1) {
         $behorighet = $row['Behorighet'];
       }
     }
-    else
+    else{
     $Error = "0 resultat";
         echo json_encode($Error);
+      }
     return true;
 }
     else {

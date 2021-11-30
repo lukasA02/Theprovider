@@ -25,13 +25,15 @@ VALUES (null, ?, ?, ?, ?, ?, ?, ?)";
 
 
 if(!$uppercase || !$lowercase || strlen($Losen) < 8) {
-  echo 'ditt lösenord ska vara minst 8 tecken långt med stora och små bokstäver, tänkt dej att du gör en mening med ord som inte hör tillsammans ';
+  $pw = 'ditt lösenord ska vara minst 8 tecken långt med stora och små bokstäver, tänkt dej att du gör en mening med ord som inte hör tillsammans ';
+  echo json_encode($pw);
 }else{
-  echo 'Strong password.';
+  $pw = 'Strong password.';
+  echo json_encode($pw);
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("issssss", $Behorighet, $Anvnamn, MD5($Losen), $Enamn, $Fnamn, $Epost, $Telefon);
   $stmt->execute();
-  echo "idot";
+  
 }
 
 
@@ -40,13 +42,11 @@ VALUES (null,'$Behorighet','$Anvnamn',MD5('$Losen'),'$Enamn','$Fnamn','$Epost','
 
 mysqli_close($conn);
 }
-else
-echo "Fyll i alla fält";
-// $stmt = $conn->prepare($sql);
-// $stmt->bind_param("issssss", $Behorighet, $Anvnamn, $Losen, $Enamn, $Fnamn, $Epost, $Telefon);
+else{
+  $Error = "Fyll i alla fält";
+echo json_encode($Error);
 
-// $stmt->execute();
-// $stmt->close();
+}
 }else{
   $Error = "misslyckad verifiering"
   echo json_encode($Error);
