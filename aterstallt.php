@@ -7,11 +7,7 @@ if(isset($_GET['aid']) && isset($_GET['hash'])){
 
   if(verifiera($_GET['hash'],$_GET['aid'])){
 
-if(isset($_GET['anv']) && isset($_GET['losen'])) {
-    $username = $_GET['anv'];
-    $password = $_GET['losen'];
-    $password = MD5($password);
-}
+$aid = $_GET['aid'];
 
 if(isset($_GET['LosenTxt'])) {
 
@@ -26,7 +22,7 @@ $uppercase = preg_match('@[A-Z]@', $NyttLosen);
 $lowercase = preg_match('@[a-z]@', $NyttLosen);
 
 
-$sql = "UPDATE anvandare SET Losen = MD5('$NyttLosen') WHERE  anvandarid = 1";
+$sql = "UPDATE anvandare SET Losen = MD5('$NyttLosen') WHERE  anvandarid = $aid";
 
 
 if(!$uppercase || !$lowercase || strlen($NyttLosen) < 8) {
